@@ -1,0 +1,18 @@
+                        
+                        
+                        <form method="POST" action="" class="form-width">
+
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        {% for message in messages %}
+
+                        <p class="flashMessage">{{ message }}</p>
+
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        <div class="form-group">
+                            {{ form.hidden_tag() }}
+                            {{ form.username(size=32, autofocus=true, required=true, placeholder="New username") }}
+                        <button type="submit" class="myBtn" value="Confirm"><span>Submit</span></button>
+                        </form>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> {% if title %}
+    <title>{{ title }} - Cook Book</title>
+    {% else %}
+    <title>Welcome to my Cook Book!</title>
+    {% endif %}
+
+
+</head>
+
+<body>
+    {% if 'username' in session %}
+    <a href="{{ url_for('logout') }}">Logout</a> 
+  
+    {% else %}
+      <a href="{{ url_for('register') }}">Register</a>
+    <a href="{{ url_for('user_login') }}">Login</a>
+    {% endif %}
+    {% block content %} {% endblock %}
+    
+</body>

@@ -1,5 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+{{ session['username'].title() }} 
 {% for r in recipe %}
 
-{{ r }}
+{{ r['recipe_name'] }}
 
 {% endfor %}
+{% endblock %}
