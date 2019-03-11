@@ -10,17 +10,32 @@
     <title>Welcome to my Cook Book!</title>
     {% endif %}
 
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <!-- My own styles --> 
+    <link rel="stylesheet" href="{{ url_for('static', filename="css/style.css") }}" type="text/css" />
+    
+    	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/ico" href="#" />
+
 
 </head>
 
 <body>
     {% if 'username' in session %}
-    <a href="{{ url_for('logout') }}">Logout</a> 
-  
-    {% else %}
-      <a href="{{ url_for('register') }}">Register</a>
-    <a href="{{ url_for('user_login') }}">Login</a>
-    {% endif %}
-    {% block content %} {% endblock %}
-    
+    <a href="{{ url_for('logout') }}">Logout</a> {% else %}
+    <a href="{{ url_for('register') }}">Register</a>
+    <a href="{{ url_for('user_login') }}">Login</a> {% endif %} {% block content %} {% endblock %}
+
+
+
+
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <!-- Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- My own js -->
+    <script type="text/javascript" src="{{ url_for('static', filename="js/main.js") }}"></script>
 </body>

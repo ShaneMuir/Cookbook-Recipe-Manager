@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% block content %}
+
+<!-- Page Layout here -->
+<div class="container">
+<div class="row">
+
+    <div class="col s7 m7">
+        <h3>{{ recipe.recipe_name }}</h3>
+
+            <hr>
+            <div class="row">
+                
+                 <div class="col s4">
+                     <div><i class="small material-icons">timer</i></div>
+                         {{ recipe.cooking_time }} Min
+                     </div>
+                     
+                     <div class="col s4">
+                         <div><i class="small material-icons">local_dining</i></div>
+                         Serves {{ recipe.serving_size }}
+                     </div>
+                    
+                    <div class="col s4">
+                        <div><i class="small material-icons">whatshot</i></div>
+                        {{ recipe.calories }} Calories
+                    </div>
+                   
+        </div>
+        <hr>
+    </div>
+
+    <div class="col m5 img-container">
+        <img class="responsive-img" src="{{ recipe.recipe_image }}">
+    </div>
+</div>
+</div>
+
+{% endblock %}
