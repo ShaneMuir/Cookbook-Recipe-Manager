@@ -4,11 +4,11 @@ from flask_pymongo import PyMongo
 
 app = Flask(__name__)
 
-app.config["MONGO_DBNAME"] = "organic"
-app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'monogodb://localhost')
+app.config["MONGO_DBNAME"] = "cookbook"
+app.config["MONGO_URI"] = os.environ.get('MONGO_URI', 'monogodb://localhost')
 
 mongo = PyMongo(app)
-    
+
 @app.route('/')
 @app.route('/get_recipes')
 def home():
