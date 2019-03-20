@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:600|Roboto+Mono");
+/* Global styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: monospace;
+  color: #303236;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase; }
+
+p, span {
+  font-family: 'Open Sans', sans-serif; }
+
+/* Index page styles */
+.card .card-title {
+  font-size: 21px;
+  font-weight: 300; }
+
+.pagination {
+  display: inline-flex;
+  width: 100%;
+  justify-content: center;
+  font-family: monospace; }
+
+/*# sourceMappingURL=main.css.map */

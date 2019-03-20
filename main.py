@@ -1,9 +1,10 @@
 import os, env
-from flask import Flask, render_template, redirect, request, url_for, flash, session
-from flask_pymongo import PyMongo
+from flask import Flask, render_template, redirect, request, url_for, flash, session, jsonify, json
+from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 from forms import LoginForm, RegistrationForm
 from pprint import pprint
+import math
 
 
 app = Flask(__name__)
@@ -18,14 +19,23 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/get_recipes')
 def index():
-    recipe = mongo.db.recipe.find()
-    return render_template('index.html', recipe=recipe, title="Home")
+    """Route lets users see all recipes, logged_in users can use CRUD"""
+    page_limit = 6
+    current_page = int(request.args.get('current_page', 1))
+    total = mongo.db.recipe.count()
+    
+    recipes = mongo.db.recipe.find().sort('_id', pymongo.ASCENDING).skip((current_page - 1)*page_limit).limit(page_limit)
+    
+    pages = range(1, int(math.ceil(total / page_limit)) + 1)
+    
+    return render_template('index.html', recipe=recipes, title="Home", current_page=current_page, pages=pages)
     
 @app.route('/recipe/<recipe_id>')
 def recipe(recipe_id):
-    the_recipe =  mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)})
-    pprint(the_recipe)
-    return render_template('recipe.html', recipe=the_recipe)
+    """Route for viewing a single recipe, logged_in users can use CRUD"""
+    a_recipe =  mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)})
+    pprint(a_recipe)
+    return render_template('recipe.html', recipe=a_recipe)
     
     
 @app.route('/register', methods=['GET', 'POST'])

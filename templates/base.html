@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"> {% if title %}
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% if title %}
     <title>{{ title }} - Cook Book</title>
     {% else %}
     <title>Welcome to my Cook Book!</title>
@@ -13,20 +14,28 @@
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-     <!-- My own styles --> 
-    <link rel="stylesheet" href="{{ url_for('static', filename="css/style.css") }}" type="text/css" />
-    
-    	<!-- Favicon -->
-	<link rel="shortcut icon" type="image/ico" href="#" />
+    <!-- My own styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename="scss/main.css") }}" type="text/css" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/ico" href="{{ url_for('static', filename="img/favicon.ico") }}" />
 
 
 </head>
 
 <body>
     {% if 'username' in session %}
-    <a href="{{ url_for('logout') }}">Logout</a> {% else %}
+    <a href="{{ url_for('logout') }}">Logout</a>
+    {% else %}
     <a href="{{ url_for('register') }}">Register</a>
-    <a href="{{ url_for('user_login') }}">Login</a> {% endif %} {% block content %} {% endblock %}
+    <a href="{{ url_for('user_login') }}">Login</a>
+    {% endif %}
+    
+    
+    
+    
+    {% block content %}
+    {% endblock %}
 
 
 
@@ -38,4 +47,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- My own js -->
     <script type="text/javascript" src="{{ url_for('static', filename="js/main.js") }}"></script>
+
+
 </body>
