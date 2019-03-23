@@ -7,7 +7,9 @@
 <h3 class="center-align">Welcome to my Cookbook</h3>
 <!-- Page Layout here -->
 <div class="row">
-
+ {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+            <p class="flashMessage">{{ message }}</p>
+            {% endfor %} {% endif %} {% endwith %}
     <div class="col s3">
 
 

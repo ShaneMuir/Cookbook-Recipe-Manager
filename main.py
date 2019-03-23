@@ -2,7 +2,7 @@ import os, env
 from flask import Flask, render_template, redirect, request, url_for, flash, session, jsonify, json
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
-from forms import LoginForm, RegistrationForm
+from forms import LoginForm, RegistrationForm, CreateRecipeForm
 from pprint import pprint
 import math
 
@@ -37,6 +37,29 @@ def recipe(recipe_id):
     
     pprint(a_recipe)
     return render_template('recipe.html', recipe=a_recipe, title=a_recipe['recipe_name'])
+    
+@app.route('/create_recipe', methods=['GET', 'POST'])
+def create_recipe():
+    """Create a new recipe to our collection"""
+    form = CreateRecipeForm(request.form)
+    if form.validate_on_submit():
+        recipes = mongo.db.recipe
+        recipes.insert_one({
+        'recipe': request.form['recipe_name'],
+        'recipe_name': request.form['recipe_name'],
+        'recipe_image': request.form['recipe_image'],
+        'serving_size': int(request.form['serving_size']),
+        'diet_labels': request.form['diet_labels'],
+        'health_labels': request.form['health_labels'],
+        'ingredients': request.form['ingredients'],
+        'ingredients_raw': '',
+        'calories': '',
+        'cooking_time': request.form['cooking_time'],
+        'total_nutrients': '',
+        'i-made-it': int(0)})
+        flash('Recipe Added!')
+        return redirect(url_for('index'))
+    return render_template('add_recipe.html', form=form)
     
     
 @app.route('/register', methods=['GET', 'POST'])

@@ -26,8 +26,7 @@ div {
   font-family: 'Josefin Sans', sans-serif;
   font-style: normal;
   font-weight: 400;
-  letter-spacing: 2px;
-  color: white; }
+  letter-spacing: 2px; }
 
 input[type=text]:not(.browser-default):focus:not([readonly]) {
   border-bottom: 1px solid #f26226;
@@ -39,7 +38,17 @@ input[type=text]:not(.browser-default) {
   font-style: normal;
   font-weight: 400;
   letter-spacing: 2px;
-  color: white; }
+  color: #fff; }
+
+textarea {
+  width: 100%;
+  height: 6rem;
+  background-color: transparent;
+  font-family: 'Josefin Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: #fff; }
 
 a {
   color: #f26226; }
@@ -88,7 +97,8 @@ a:hover {
 
 .bg-img {
   background-color: rgba(39, 55, 73, 0.98);
-  color: #fff; }
+  color: #fff;
+  overflow: hidden; }
 
 .title {
   font-family: 'Margarine', cursive;

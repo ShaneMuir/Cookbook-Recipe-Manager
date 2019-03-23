@@ -1,1 +1,50 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {%block content %}
+
+<div class="bg-img">
+    <a href=" {{ url_for('index') }}">
+    <i class="material-icons close-icon">highlight_off</i>
+    </a>
+    <div class="container">
+        <h2 class="title">Add Recipe</h2>
+
+
+        <form method="POST" action="" class="form-width">
+            {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+            <p class="flashMessage">{{ message }}</p>
+            {% endfor %} {% endif %} {% endwith %}
+            <div class="row">
+                <div class="input-field col s12">
+                    {{ form.hidden_tag() }} {{ form.recipe_name(size=32, required=true, placeholder="Chicken") }}
+                </div>
+                <div class="input-field col s12">
+                    {{ form.hidden_tag() }} {{ form.ingredients(size=128, required=true, placeholder="1/2 cup olive oil, 5 cloves garlic, peeled, 2 large russet potatoes, peeled and cut into chunks, 3/4 cup white wine, Salt and pepper") }}
+                </div>
+                <div class="input-field col s12">
+                    {{ form.hidden_tag() }} {{ form.description(size=250, placeholder="Description") }}
+                </div>
+                <div class="input-field col s6">
+                    {{ form.hidden_tag() }} {{ form.cooking_time(placeholder="Cooking Time") }}
+                </div>
+                <div class="input-field col s6">
+                    {{ form.hidden_tag() }} {{ form.serving_size(placeholder="Serving Size") }}
+                </div>
+                <div class="input-field col s6">
+                    {{ form.hidden_tag() }} {{ form.health_labels(placeholder="Health Leabels") }}
+                </div>
+                <div class="input-field col s6">
+                    {{ form.hidden_tag() }} {{ form.diet_labels(placeholder="Diet Leabels") }}
+                </div>
+                <div class="input-field col s12">
+                    {{ form.hidden_tag() }} {{ form.recipe_image(required=true, placeholder="Copy Image Address Link") }}
+                </div>
+                <div class="input-field col s12">
+                    {{ form.hidden_tag() }} {{ form.source(placeholder="Reicpe Source URL") }}
+                </div>
+
+                <button class="btn waves-effect waves-light my-btn section hoverable" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
+            </div>
+        </form>
+
+    </div>
+
+    {% endblock %}
