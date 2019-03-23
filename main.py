@@ -34,8 +34,9 @@ def index():
 def recipe(recipe_id):
     """Route for viewing a single recipe, logged_in users can use CRUD"""
     a_recipe =  mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)})
+    
     pprint(a_recipe)
-    return render_template('recipe.html', recipe=a_recipe)
+    return render_template('recipe.html', recipe=a_recipe, title=a_recipe['recipe_name'])
     
     
 @app.route('/register', methods=['GET', 'POST'])

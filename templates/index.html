@@ -1,4 +1,9 @@
-{% extends 'base.html' %} {% block content %} {% if session %} {{ session['username'].title() }} {% else %} {% endif %}
+{% extends 'base.html' %}
+{% block nav %}
+{% include '_navbar.html' %}
+{% endblock %}
+
+{% block content %}
 <h3 class="center-align">Welcome to my Cookbook</h3>
 <!-- Page Layout here -->
 <div class="row">
@@ -10,9 +15,10 @@
     </div>
 
     <div class="col m9">
+        
         {% for r in recipe %}
         <div class="col s12 m4">
-            <div class="card">
+            <div class="card hoverable">
                 <div class="card-image waves-effect waves-block waves-light">
                     <img class="activator" src="{{ r['recipe_image'] }}">
                 </div>
@@ -74,6 +80,8 @@
 
     <!-- end of row -->
 </div>
+{% endblock %}
 
-
+{% block footer %}
+{% include '_footer.html' %}
 {% endblock %}

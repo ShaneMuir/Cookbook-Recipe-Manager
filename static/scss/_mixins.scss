@@ -1,10 +1,23 @@
 @mixin headings {
-    font-family: monospace;
+    font-family: 'Margarine', cursive;
     color: #303236;
     font-style: normal;
-    font-weight: 500;
-    letter-spacing: 0.1em;
+    font-weight: 400;
+    letter-spacing: 2px;
     margin-bottom: 20px;
     text-align: center;
     text-transform: uppercase;
+}
+
+@mixin txt-hvr {
+    color: $txt-hvf-color;
+    text-decoration: none;
+}
+
+@mixin text {
+    font-family: 'Josefin Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: white;
 }

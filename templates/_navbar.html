@@ -1,0 +1,29 @@
+  <header>
+        <nav>
+            <div class="nav-wrapper">
+                <div class="container">
+                     <span class="v-align logo"><i class=" large material-icons nav-icon">local_dining</i>Cookbook</span>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <ul class="right hide-on-med-and-down">
+                        {% if 'username' in session %}
+                        <li><a class="add-recipe" href="#">Add recipe</a></li>
+                        <li><a class="no-hvr" href="{{ url_for('logout') }}">Logout</a></li>
+                        {% else %}
+                        <li><a class="no-hvr" href="{{ url_for('user_login') }}">Login</a></li>
+                        <li><a class="sign-up" href="{{ url_for('register') }}">Sign Up</a></li>
+                        
+                        {% endif %}
+                    </ul>
+                </div>
+        </nav>
+
+        <ul class="sidenav" id="mobile-demo">
+            {% if 'username' in session %}
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+            
+            <li><a href="{{ url_for('user_login') }}">Login</a></li>
+            <li><a href="{{ url_for('register') }}">Sign Up</a></li>
+            {% endif %}
+        </ul>
+    </header>

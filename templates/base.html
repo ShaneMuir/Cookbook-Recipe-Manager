@@ -24,29 +24,19 @@
 </head>
 
 <body>
-    {% if 'username' in session %}
-    <a href="{{ url_for('logout') }}">Logout</a>
-    {% else %}
-    <a href="{{ url_for('register') }}">Register</a>
-    <a href="{{ url_for('user_login') }}">Login</a>
-    {% endif %}
+    {% block nav %} {% endblock %}
     
     
+    {% block content %} {% endblock %}
     
     
-    {% block content %}
-    {% endblock %}
+    {% block footer %} {% endblock %}
 
-
-
-
-
+  
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <!-- Materialize JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- My own js -->
     <script type="text/javascript" src="{{ url_for('static', filename="js/main.js") }}"></script>
-
-
 </body>
