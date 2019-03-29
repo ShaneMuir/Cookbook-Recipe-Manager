@@ -5,33 +5,63 @@
     <div class="row">
         <div class="col m7">
             <h3>{{ recipe.recipe_name }}</h3>
-
-            <hr>
-            <div class="row">
-                <div class="col s4">
+            <div>
+                <p class="section">{{ recipe.description }}</p>
+            </div>
+            <div class="divider"></div>
+            <div class="row section">
+                <div class="col s4 nut-icons">
                     <div><i class="small material-icons">timer</i></div>
                     {{ recipe.cooking_time }} Min
                 </div>
 
-                <div class="col s4">
+                <div class="col s4 nut-icons">
                     <div><i class="small material-icons">local_dining</i></div>
                     Serves {{ recipe.serving_size }}
                 </div>
 
-                <div class="col s4">
+                <div class="col s4 nut-icons">
                     <div><i class="small material-icons">whatshot</i></div>
                     {{ recipe.calories }} Calories
                 </div>
             </div>
+            <div class="divider"></div>
 
-            <hr>
+            <div>
+                <h4 class="left-align">Ingredients</h4>
+                <p style="white-space: pre-wrap;">{{ recipe.ingredients }}</p>
+            </div>
 
+
+
+
+            <!--end of col-md7 -->
         </div>
 
-        <div class="col m5 img-container">
-            <img class="responsive-img" src="{{ recipe.recipe_image }}">
+        <div class="col m5 img-container section">
+            
+            <a href="#" data-featherlight="#mylightbox"><div id="mylightbox"><img class="responsive-img" src="{{ recipe.recipe_image }}"></div></a>
+            <p class="center-align">{{ recipe['i-made-it'] }} People have made this.</p>
+            <p class="centre-align"><a class="waves-effect waves-light btn btn-style"><i class="material-icons left">favorite</i>I made this</a></p>
         </div>
+        {% if session %}
+        {% if session['username'].title() == recipe.username.title() %}
+        <div class="col s6">
+            <p class="centre-align"><a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn btn-style">Edit Recipe</a></p>
+        </div>
+        <div class="col s6">
+            <p class="centre-align"><a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn btn-style">Delete Recipe</a></p>
+        </div>
+        {% else %}
+        {% endif %}
+        {% endif %}
+
+
+
     </div>
 </div>
 
-{% endblock %} {% block footer %} {% include '_footer.html' %} {% endblock %}
+{% endblock %}
+{% block footer %} {% include '_footer.html' %} {% endblock %}
+
+

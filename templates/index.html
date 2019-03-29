@@ -8,7 +8,7 @@
 <!-- Page Layout here -->
 <div class="row">
  {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
-            <p class="flashMessage">{{ message }}</p>
+            <p>{{ message }}</p>
             {% endfor %} {% endif %} {% endwith %}
     <div class="col s3">
 

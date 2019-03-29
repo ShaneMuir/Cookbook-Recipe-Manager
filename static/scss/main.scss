@@ -32,6 +32,45 @@ input[type=text]:not(.browser-default):focus:not([readonly]) {
     box-shadow: 0 1px 0 0 $prim-color;
 }
 
+input[type=text]:not(.browser-default):focus:not([readonly])+label {
+    color: $prim-color;
+}
+
+
+textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid $prim-color;
+    -webkit-box-shadow: 0 1px 0 0 $prim-color;
+    box-shadow: 0 1px 0 0 $prim-color;
+}
+
+textarea.materialize-textarea:focus:not([readonly])+label {
+    color: $prim-color;
+}
+
+textarea.materialize-textarea.valid {
+    border-bottom: 1px solid $prim-color;
+    -webkit-box-shadow: 0 1px 0 0 $prim-color;
+    box-shadow: 0 1px 0 0 $prim-color;
+}
+
+input.valid[type=text]:not(.browser-default) {
+    border-bottom: 1px solid $prim-color;
+    -webkit-box-shadow: 0 1px 0 0 $prim-color;
+    box-shadow: 0 1px 0 0 $prim-color;
+}
+
+input[type=text]:not(.browser-default):active:not([readonly]) {
+    border-bottom: 1px solid $prim-color;
+    -webkit-box-shadow: 0 1px 0 0 $prim-color;
+    box-shadow: 0 1px 0 0 $prim-color;
+}
+
+input[type=text]:not(.browser-default):visited:not([readonly]) {
+    border-bottom: 1px solid $prim-color;
+    -webkit-box-shadow: 0 1px 0 0 $prim-color;
+    box-shadow: 0 1px 0 0 $prim-color;
+}
+
 input[type=text]:not(.browser-default) {
     @include text;
     color: $white;
@@ -232,16 +271,16 @@ nav i.material-icons {
 }
 
 .add-recipe {
-        border-radius: 2px;
+    border-radius: 2px;
     -moz-user-select: -moz-none;
     -ms-user-select: none;
     -webkit-user-select: none;
     user-select: none;
     box-sizing: content-box;
     font-size: 14px;
-    line-height: 47.88px;
-    height: 47.88px;
-    padding: 0 20px;
+    line-height: 42.88px;
+    height: 39.88px;
+    padding: 0 18px;
     display: inline-block;
     text-decoration: none;
     border: 0px;
@@ -252,7 +291,7 @@ nav i.material-icons {
     cursor: pointer;
     position: relative;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.1em
 }
 
 nav ul a:hover {
@@ -298,6 +337,29 @@ nav ul a:hover {
     padding: 10px 0px;
     color: rgba(255, 255, 255, 0.8);
     background-color: rgba(51, 51, 51, 0.08);
+}
+
+/* Single Recipe view styles */
+
+.btn-style {
+    @include btn-style
+}
+
+.btn-style:hover {
+    background-color: rgba(46, 98, 175, 0.9);
+    color: #fff;
+}
+
+div .row .section {
+    margin-bottom: 0px;
+}
+
+.nut-icons {
+    text-align: center;
+}
+
+img.responsive-img {
+    width: 100%;
 }
 
 

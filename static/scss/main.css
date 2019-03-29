@@ -33,6 +33,37 @@ input[type=text]:not(.browser-default):focus:not([readonly]) {
   -webkit-box-shadow: 0 1px 0 0 #f26226;
   box-shadow: 0 1px 0 0 #f26226; }
 
+input[type=text]:not(.browser-default):focus:not([readonly]) + label {
+  color: #f26226; }
+
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #f26226;
+  -webkit-box-shadow: 0 1px 0 0 #f26226;
+  box-shadow: 0 1px 0 0 #f26226; }
+
+textarea.materialize-textarea:focus:not([readonly]) + label {
+  color: #f26226; }
+
+textarea.materialize-textarea.valid {
+  border-bottom: 1px solid #f26226;
+  -webkit-box-shadow: 0 1px 0 0 #f26226;
+  box-shadow: 0 1px 0 0 #f26226; }
+
+input.valid[type=text]:not(.browser-default) {
+  border-bottom: 1px solid #f26226;
+  -webkit-box-shadow: 0 1px 0 0 #f26226;
+  box-shadow: 0 1px 0 0 #f26226; }
+
+input[type=text]:not(.browser-default):active:not([readonly]) {
+  border-bottom: 1px solid #f26226;
+  -webkit-box-shadow: 0 1px 0 0 #f26226;
+  box-shadow: 0 1px 0 0 #f26226; }
+
+input[type=text]:not(.browser-default):visited:not([readonly]) {
+  border-bottom: 1px solid #f26226;
+  -webkit-box-shadow: 0 1px 0 0 #f26226;
+  box-shadow: 0 1px 0 0 #f26226; }
+
 input[type=text]:not(.browser-default) {
   font-family: 'Josefin Sans', sans-serif;
   font-style: normal;
@@ -215,9 +246,9 @@ nav i.material-icons {
   user-select: none;
   box-sizing: content-box;
   font-size: 14px;
-  line-height: 47.88px;
-  height: 47.88px;
-  padding: 0 20px;
+  line-height: 42.88px;
+  height: 39.88px;
+  padding: 0 18px;
   display: inline-block;
   text-decoration: none;
   border: 0px;
@@ -267,6 +298,43 @@ nav ul a:hover {
   padding: 10px 0px;
   color: rgba(255, 255, 255, 0.8);
   background-color: rgba(51, 51, 51, 0.08); }
+
+/* Single Recipe view styles */
+.btn-style {
+  border-radius: 2px;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  box-sizing: content-box;
+  font-size: 14px;
+  line-height: 42.88px;
+  height: 39.88px;
+  padding: 0 18px;
+  display: inline-block;
+  text-decoration: none;
+  border: 0px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #f26226;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.1em; }
+
+.btn-style:hover {
+  background-color: rgba(46, 98, 175, 0.9);
+  color: #fff; }
+
+div .row .section {
+  margin-bottom: 0px; }
+
+.nut-icons {
+  text-align: center; }
+
+img.responsive-img {
+  width: 100%; }
 
 /* Navbar */
 @media only screen and (min-width: 601px) {

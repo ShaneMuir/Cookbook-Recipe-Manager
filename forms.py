@@ -10,13 +10,14 @@ class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
 
 
-class CreateRecipeForm(FlaskForm):
-    recipe_name = StringField('Title', validators=[DataRequired()])
+class RecipeForm(FlaskForm):
+    recipe_name = StringField('Recipe Name', validators=[DataRequired()])
     description = TextAreaField('Description', validators=[DataRequired()])
     health_labels = TextAreaField('Health Labels', validators=[Optional()])
     diet_labels = TextAreaField('Diet Labels', validators=[Optional()])
     ingredients = TextAreaField('Ingredients', validators=[DataRequired()])
-    cooking_time = IntegerField('Cooking Time')
-    serving_size = IntegerField('Serving Size')
+    cooking_time = IntegerField('Cooking Time', validators=[DataRequired()])
+    serving_size = IntegerField('Serving Size', validators=[DataRequired()])
+    calories = IntegerField('Calories', validators=[DataRequired()])
     recipe_image = StringField('Copy Image Address Link', validators=[DataRequired()])
     source = StringField('Source URL Link', validators=[Optional()])

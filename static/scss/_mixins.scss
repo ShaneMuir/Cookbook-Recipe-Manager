@@ -20,3 +20,28 @@
     font-weight: 400;
     letter-spacing: 2px;
 }
+
+@mixin btn-style {
+    border-radius: 2px;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    box-sizing: content-box;
+    font-size: 14px;
+    line-height: 42.88px;
+    height: 39.88px;
+    padding: 0 18px;
+    display: inline-block;
+    text-decoration: none;
+    border: 0px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #f26226;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
