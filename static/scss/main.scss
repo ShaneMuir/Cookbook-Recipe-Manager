@@ -345,6 +345,13 @@ nav ul a:hover {
     @include btn-style
 }
 
+.btn-centre {
+    display: inline-flex;
+    justify-content: center;
+    margin: auto;
+    width: 100%;
+}
+
 .btn-style:hover {
     background-color: rgba(46, 98, 175, 0.9);
     color: #fff;
