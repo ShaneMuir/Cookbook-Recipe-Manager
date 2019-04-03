@@ -1,10 +1,9 @@
-import os
+import os, math, re
 from flask import Flask, render_template, redirect, request, url_for, flash, session, jsonify, json
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 from forms import LoginForm, RegistrationForm, RecipeForm
 from pprint import pprint
-import math
 
 
 app = Flask(__name__)
@@ -14,6 +13,7 @@ app.config["MONGO_URI"] = os.getenv("MONGO_URI", "monogodb://localhost")
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 
 mongo = PyMongo(app)
+
 
 
 @app.route('/')
@@ -26,15 +26,41 @@ def index():
     pages = range(1, int(math.ceil(total / page_limit)) + 1)
     recipes = mongo.db.recipe.find().sort('_id', pymongo.ASCENDING).skip((current_page - 1)*page_limit).limit(page_limit)
     
+    if session:
+        user = mongo.db.user.find_one({'name': session['username'].title()})
+        return render_template('index.html', recipe=recipes, title='Home', current_page=current_page, pages=pages, user=user)
+    
     return render_template('index.html', recipe=recipes, title='Home', current_page=current_page, pages=pages)
     
-@app.route('/recipe/<recipe_id>')
+@app.route('/recipe/<recipe_id>', methods=['GET','POST'])
 def recipe(recipe_id):
     """Route for viewing a single recipe, logged_in users can use CRUD"""
     a_recipe =  mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)})
-    
     pprint(a_recipe)
     return render_template('recipe.html', recipe=a_recipe, title=a_recipe['recipe_name'])
+    
+@app.route('/i-made-it/<recipe_id>')
+def i_made_it(recipe_id):
+    """Function to increment i-made-it counter"""
+    mongo.db.recipe.find_one_and_update(
+        {'_id': ObjectId(recipe_id)},
+        {'$inc': {'i-made-it': 1}}
+    )
+    return redirect(url_for('recipe', recipe_id=recipe_id))
+
+@app.route('/search')
+def search():
+    """Route for search bar"""
+    page_limit = 6 #Logic for pagination
+    current_page = int(request.args.get('current_page', 1))
+    total = mongo.db.recipe.count()
+    pages = range(1, int(math.ceil(total / page_limit)) + 1)
+
+    db_query = request.args['db_query']
+    results = mongo.db.recipe.find({'$text': {'$search': db_query }}).sort('_id', pymongo.ASCENDING).skip((current_page - 1)*page_limit).limit(page_limit)
+
+    return render_template('search.html', results=results, pages=pages, current_page=current_page)
+    
     
 @app.route('/create_recipe', methods=['GET', 'POST'])
 def create_recipe():
@@ -68,6 +94,7 @@ def create_recipe():
     
 @app.route('/edit_recipe/<recipe_id>', methods=['GET', 'POST'])
 def edit_recipe(recipe_id):
+    """Function to edit seclect recipe"""
     form = RecipeForm()
     the_recipe = mongo.db.recipe.find_one_or_404({'_id': ObjectId(recipe_id)})
     if request.method == 'GET':
@@ -101,14 +128,13 @@ def edit_recipe(recipe_id):
     
 @app.route('/delete/<recipe_id>')
 def delete_recipe(recipe_id):
+    """Function for deleting a select recipe"""
     recipe = mongo.db.recipe
     recipe.delete_one({
         '_id': ObjectId(recipe_id)
     })
     flash('Recipe deleted')
     return redirect(url_for('index'))
-    
-    
     
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -117,7 +143,6 @@ def register():
         return redirect(url_for('index'))
     
     form = RegistrationForm() 
-    
     if form.validate_on_submit():
             
         user = mongo.db.user
@@ -133,6 +158,7 @@ def register():
         return redirect(url_for('register'))
                 
     return render_template('register.html', form=form, title="Register")
+    
     
     
 @app.route('/login', methods=['GET', 'POST'])

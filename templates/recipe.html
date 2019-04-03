@@ -42,7 +42,7 @@
             
             <a href="#" data-featherlight="#mylightbox"><div id="mylightbox"><img class="responsive-img" src="{{ recipe.recipe_image }}"></div></a>
             <p class="center-align">{{ recipe['i-made-it'] }} People have made this.</p>
-            <div class="btn-centre"><a class="waves-effect waves-light btn btn-style"><i class="material-icons left">favorite</i>I made this</a></div>
+            <div class="btn-centre"><a href="{{ url_for('i_made_it', recipe_id=recipe._id) }}" class="waves-effect waves-light btn btn-style"><i class="material-icons left">favorite</i>I made this</a></div>
         </div>
         {% if session %}
         {% if session['username'].title() == recipe.username.title() %}

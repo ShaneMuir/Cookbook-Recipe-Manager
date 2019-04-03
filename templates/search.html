@@ -3,7 +3,7 @@
 {% block content %}
 <div class="row tp-search">
     <div class="col s3">
-       <span class="v-align site-logo"><i class="small material-icons nav-icon">library_books</i>Cookbook</span>
+       <span class="v-align site-logo"><i class="small material-icons nav-icon">library_books</i> Cookbook</span>
         
 {% with messages = get_flashed_messages() %}
 {% if messages %} {% for message in messages %}
@@ -64,7 +64,7 @@
 
 
     <div class="col m9">
-        {% for r in recipe %}
+        {% for r in results %}
         <div class="col s12 m4">
             <div class="card hoverable">
                 <div class="card-image waves-effect waves-block waves-light">
@@ -103,15 +103,7 @@
         {% endfor %}
 
 
-        <ul class="pagination">
-            <li class="disabled"><i class="material-icons">chevron_left</i></li>
-            {% for page_number in pages %} {% if page_number == current_page %}
-            <li class="active"><a>{{ page_number }}</a></li>
-            {% else %}
-            <li class="waves-effect"><a href="{{ url_for('index', current_page=page_number) }}">{{ page_number }}</a></li>
-            {% endif %} {% endfor %}
-            <li class="disabled"><i class="material-icons">chevron_right</i></li>
-        </ul>
+    
 
         <!-- end of col-9 -->
     </div>
