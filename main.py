@@ -26,9 +26,6 @@ def index():
     pages = range(1, int(math.ceil(total / page_limit)) + 1)
     recipes = mongo.db.recipe.find().sort('_id', pymongo.ASCENDING).skip((current_page - 1)*page_limit).limit(page_limit)
     
-    if session:
-        user = mongo.db.user.find_one({'name': session['username'].title()})
-        return render_template('index.html', recipe=recipes, title='Home', current_page=current_page, pages=pages, user=user)
     
     return render_template('index.html', recipe=recipes, title='Home', current_page=current_page, pages=pages)
     
@@ -60,7 +57,16 @@ def search():
     results = mongo.db.recipe.find({'$text': {'$search': db_query }}).sort('_id', pymongo.ASCENDING).skip((current_page - 1)*page_limit).limit(page_limit)
 
     return render_template('search.html', results=results, pages=pages, current_page=current_page)
-    
+
+
+@app.route('/filtered_search', methods=['GET', 'POST'])
+def filtered():
+    """Logic for allowing filtering"""
+    filtered = request.form
+    for k, v in filtered.items():
+        results = mongo.db.recipe.find({'$text': {'$search': v }}).sort('_id', pymongo.ASCENDING)
+        return render_template('search.html', results=results)
+
     
 @app.route('/create_recipe', methods=['GET', 'POST'])
 def create_recipe():
@@ -95,6 +101,9 @@ def create_recipe():
 @app.route('/edit_recipe/<recipe_id>', methods=['GET', 'POST'])
 def edit_recipe(recipe_id):
     """Function to edit seclect recipe"""
+    if 'logged_in' not in session: #Check if its a logged in user
+        flash('Sorry, only logged in users can create recipes. Please register')
+        return redirect(url_for('index'))
     form = RecipeForm()
     the_recipe = mongo.db.recipe.find_one_or_404({'_id': ObjectId(recipe_id)})
     if request.method == 'GET':

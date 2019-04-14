@@ -1,69 +1,107 @@
-{% extends 'base.html' %} {% block nav %} {% include '_navbar.html' %} {% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% block nav %} {% include '_navbar.html' %} {% endblock %} {% block content %}
 <div class="row tp-search">
-    <div class="col s3">
-       <span class="v-align site-logo"><i class="small material-icons nav-icon">library_books</i>Cookbook</span>
-        
-{% with messages = get_flashed_messages() %}
-{% if messages %} {% for message in messages %}
-<p>{{ message }}</p>
-{% endfor %} {% endif %} 
-{% endwith %}
+    <div class="col hide-on-small-only m3">
+        <span class="v-align site-logo"><i class="small material-icons nav-icon">local_dining</i>Cookbook</span> {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %} {% endif %} {% endwith %}
     </div>
-    <div class="col s9">
-        <form action="{{ url_for('search') }}" class="search-form" >
-          <div class="input-field col s12">
-          <i class="material-icons prefix">youtube_searched_for</i>
-          <input type="text" id="db_query" name="db_query">
-          <label for="db_query">Search</label>
-          </div>
-          </form>
+    <div class="col s12 m9">
+        <form action="{{ url_for('search') }}" class="search-form">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">youtube_searched_for</i>
+                <input type="text" id="db_query" name="db_query">
+                <button class="btn waves-effect waves-light" type="submit" name="action">GO
+    <i class="material-icons right">send</i>
+  </button>
+                <label for="db_query">Search</label>
+
+            </div>
+        </form>
     </div>
 </div>
 
 <!-- Page Layout here -->
 <div class="row">
 
-    <div class="col s3">
+    <div class="col s12 m3">
+
         <ul class="collapsible">
             <li class="active">
-              <div class="collapsible-header">Main Ingredient<i class="material-icons dropdown-icon">arrow_drop_down</i></div>
-              <div class="collapsible-body"><a>Chicken</a>
-              <div><span>Beef</span></div>
-              <div><span>Pork</span></div>
-              <div><span>Fish</span></div>
-              <div><span>Vegetarian</span></div>
-              </div>
+                <div class="collapsible-header">Main Ingredient<i class="material-icons dropdown-icon">arrow_drop_down</i></div>
+                <div class="collapsible-body">
+                    <form action="{{ url_for('filtered') }}" method="POST">
+                        <p>
+                            <label for="chicken">
+        <input name="group1" type="radio" id="chicken" value="chicken" />
+        <span>Chicken</span>
+      </label>
+                        </p>
+                        <p>
+                            <label for="beef">
+        <input name="group1" type="radio" id="beef" value="beef" />
+        <span>Beef</span>
+      </label>
+                        </p>
+                        <p>
+                            <label>
+        <input name="group1" type="radio" value="pork"/>
+        <span>Pork</span>
+      </label>
+                        </p>
+                        <p>
+                            <label>
+        <input name="group1" type="radio" value="Fish" />
+        <span>Fish</span>
+      </label>
+                        </p>
+                        <p>
+                            <label>
+        <input name="group1" type="radio" value="Pasta" />
+        <span>Pasta</span>
+      </label>
+                        </p>
+                        <p>
+                            <label>
+        <input name="group1" type="radio" valie="vagetarian" />
+        <span>Vegetarian</span>
+      </label>
+                        </p>
+                        <button class="btn waves-effect waves-light" type="submit">GO
+    <i class="material-icons right">send</i>
+  </button>
+
+                    </form>
+
+                </div>
             </li>
         </ul>
         <ul class="collapsible">
             <li class="active">
-              <div class="collapsible-header">Diet Labels<i class="material-icons dropdown-icon">arrow_drop_down</i></div>
-              <div class="collapsible-body"><a>Low-Carb</a>
-              <div><span>Fat-Free</span></div>
-              <div><span>Gluten-Free</span></div>
-              <div><span>High-Protein</span></div>
-              <div><span>Balanced</span></div>
-              </div>
+                <div class="collapsible-header">Diet Labels<i class="material-icons dropdown-icon">arrow_drop_down</i></div>
+                <div class="collapsible-body"><a>Low-Carb</a>
+                    <div><span>Fat-Free</span></div>
+                    <div><span>Gluten-Free</span></div>
+                    <div><span>High-Protein</span></div>
+                    <div><span>Balanced</span></div>
+                </div>
             </li>
         </ul>
         <ul class="collapsible">
             <li class="active">
-              <div class="collapsible-header">Health Labels<i class="material-icons dropdown-icon">arrow_drop_down</i></div>
-              <div class="collapsible-body"><a>Sugar-Conscious</a>
-              <div><span>Peanut-Free</span></div>
-              <div><span>Tree-Nut-Free</span></div>
-              <div><span>Alcohol-Free</span></div>
-              <div><span>Vegan</span></div>
-              <div><span>Vegetarian</span></div>
-              </div>
+                <div class="collapsible-header">Health Labels<i class="material-icons dropdown-icon">arrow_drop_down</i></div>
+                <div class="collapsible-body"><a>Sugar-Conscious</a>
+                    <div><span>Peanut-Free</span></div>
+                    <div><span>Tree-Nut-Free</span></div>
+                    <div><span>Alcohol-Free</span></div>
+                    <div><span>Vegan</span></div>
+                    <div><span>Vegetarian</span></div>
+                </div>
             </li>
         </ul>
     </div>
 
 
-    <div class="col m9">
+    <div class="col s12 m9">
         {% for r in recipe %}
         <div class="col s12 m4">
             <div class="card hoverable">
@@ -75,24 +113,24 @@
                     <p><a href="{{url_for('recipe', recipe_id=r._id)}}">View Recipe</a></p>
                 </div>
                 <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">{{ r['recipe_name'] }}<i class="material-icons right">close</i></span>
+                    <span class="card-title" id="inner-title">{{ r['recipe_name'] }}<i class="material-icons right">close</i></span>
 
-                    <div class="container">
+                    <div class="container inner-card-container">
                         <div class="row ">
                             <div class="col s12 ">
-                                <span class="valign-wrapper center-text"><i class="small material-icons">timer</i> Time: {{ r['cooking_time'] }} Min</span>
+                                <span class="valign-wrapper inner-card-text"><i class="medium material-icons inner-card-icon">timer</i> Time: {{ r['cooking_time'] }} Min</span>
                             </div>
                         </div>
 
                         <div class="row ">
                             <div class="col s12">
-                                <span class="valign-wrapper"><i class="small material-icons">local_dining</i>Servings: {{ r['serving_size'] }}</span>
+                                <span class="valign-wrapper  inner-card-text"><i class="medium material-icons  inner-card-icon">local_dining</i>Servings: {{ r['serving_size'] }}</span>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col s12">
-                                <span class="valign-wrapper"><i class="small material-icons">whatshot</i>Calories: {{ r['calories'] }}</span>
+                                <span class="valign-wrapper  inner-card-text"><i class="medium material-icons  inner-card-icon">whatshot</i>Calories: {{ r['calories'] }}</span>
                             </div>
                         </div>
                     </div>
@@ -117,6 +155,4 @@
     </div>
     <!-- end of row -->
 </div>
-{% endblock %} 
-
-{% block footer %} {% include '_footer.html' %} {% endblock %}
+{% endblock %} {% block footer %} {% include '_footer.html' %} {% endblock %}
