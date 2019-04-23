@@ -26,10 +26,27 @@ div,
     @include text
 }
 
+label {
+    color: $black;
+}
+
+[type="radio"]:checked+span:after,
+[type="radio"].with-gap:checked+span:after {
+    background-color: $prim-color;
+    border: 2px solid $prim-color;
+}
+
 input[type=text]:not(.browser-default):focus:not([readonly]) {
     border-bottom: 1px solid $prim-color;
     -webkit-box-shadow: 0 1px 0 0 $prim-color;
     box-shadow: 0 1px 0 0 $prim-color;
+}
+
+.btn:focus,
+.btn-large:focus,
+.btn-small:focus,
+.btn-floating:focus {
+    background-color: $prim-color;
 }
 
 input[type=text]:not(.browser-default):focus:not([readonly])+label {
@@ -43,12 +60,19 @@ input[type=text]:not(.browser-default),
     font-weight: 400;
     letter-spacing: 2px;
     color: black;
+    width: 80%;
 }
 
 textarea.materialize-textarea:focus:not([readonly]) {
     border-bottom: 1px solid $prim-color;
     -webkit-box-shadow: 0 1px 0 0 $prim-color;
     box-shadow: 0 1px 0 0 $prim-color;
+}
+
+
+
+.select-wrapper input.select-dropdown:focus{
+        border-bottom: 1px solid $prim-color;
 }
 
 .input-field .prefix.active {
@@ -58,6 +82,12 @@ textarea.materialize-textarea:focus:not([readonly]) {
 textarea.materialize-textarea:focus:not([readonly])+label {
     color: $prim-color;
 }
+
+[type="checkbox"]:checked+span:not(.lever):before {
+    border-right: 2px solid $prim-color;
+    border-bottom: 2px solid $prim-color;
+}
+
 
 textarea.materialize-textarea.valid {
     border-bottom: 1px solid $prim-color;
@@ -88,6 +118,10 @@ input[type=text]:not(.browser-default) {
     color: $white;
 }
 
+.select-wrapper input.select-dropdown {
+    color: black;
+}
+
 textarea {
     width: 100%;
     height: 6rem;
@@ -105,7 +139,7 @@ a:hover {
 }
 
 
-/* Index page styles */
+/* Home Page page styles */
 
 .site-logo {
     font-size: 30px;
@@ -114,6 +148,39 @@ a:hover {
     width: 100%;
     margin: auto;
     justify-content: center;
+}
+
+i.right {
+    float: right;
+    margin-left: 5px;
+}
+
+i.medium {
+    font-size: 3rem;
+}
+
+
+.search-btn {
+    border-radius: 2px;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    box-sizing: content-box;
+    padding: 0 10px;
+    display: inline-block;
+    text-decoration: none;
+    color: $black;
+    border: 2px solid;
+    border-color: #f26226;
+    outline: none;
+    background-color: transparent;
+    font-family: 'Margarine', cursive;
+}
+
+.search-btn:hover {
+    color: $white;
+    background-color: #f26226;
 }
 
 i.small {
@@ -141,8 +208,9 @@ i.small {
 
 .collapsible-header .dropdown-icon {
     position: absolute;
-    right: 15px;
+    right: 5px;
     font-size: 2rem;
+    line-height: 0.7;
 }
 
 .pagination {
@@ -156,6 +224,33 @@ i.small {
     background-color: $sec-color;
 }
 
+.collapsible-header {
+    position: relative;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.filter-btn {
+    background-color: transparent;
+    width: 100%;
+    border-radius: 2px;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    color: black;
+    outline: none;
+    border: 2px solid #f26226;
+    text-decoration: none;
+    line-height: 1;
+    font-family: 'Margarine', cursive;
+}
+
+.filter-btn:hover {
+    background-color: #f26226;
+    color: $white;
+
+}
 
 
 /* Register page Styles */
@@ -301,7 +396,7 @@ nav i.material-icons {
     user-select: none;
     box-sizing: content-box;
     font-size: 14px;
-    line-height: 47.88px;
+    line-height: 50.88px;
     height: 47.88px;
     padding: 0 35px;
     display: inline-block;

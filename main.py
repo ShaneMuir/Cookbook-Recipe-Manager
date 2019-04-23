@@ -50,22 +50,34 @@ def search():
     """Route for search bar"""
     page_limit = 6 #Logic for pagination
     current_page = int(request.args.get('current_page', 1))
-    total = mongo.db.recipe.count()
-    pages = range(1, int(math.ceil(total / page_limit)) + 1)
-
     db_query = request.args['db_query']
+    total = mongo.db.recipe.find({'$text': {'$search': db_query }})
+    t_total = len([x for x in total])
+    pages = range(1, int(math.ceil(t_total / page_limit)) + 1)
+    
     results = mongo.db.recipe.find({'$text': {'$search': db_query }}).sort('_id', pymongo.ASCENDING).skip((current_page - 1)*page_limit).limit(page_limit)
-
     return render_template('search.html', results=results, pages=pages, current_page=current_page)
 
 
 @app.route('/filtered_search', methods=['GET', 'POST'])
 def filtered():
     """Logic for allowing filtering"""
-    filtered = request.form
-    for k, v in filtered.items():
-        results = mongo.db.recipe.find({'$text': {'$search': v }}).sort('_id', pymongo.ASCENDING)
-        return render_template('search.html', results=results)
+    page_limit = 6 #Logic for pagination
+    current_page = int(request.args.get('current_page', 1))
+    total = mongo.db.recipe.count()
+    pages = range(1, int(math.ceil(total / page_limit)) + 1)
+    
+    if request.method == "POST":
+        filter_by = []
+        filtered = request.form
+        for key , value in filtered.items():
+            filter_by.append({key: value})
+            results = mongo.db.recipe.find({'$and': filter_by })
+            return render_template('filter.html', title="Filtered Seach", results=results)
+    
+    recipes = mongo.db.recipe.find().sort('_id', pymongo.ASCENDING).skip((current_page - 1)*page_limit).limit(page_limit)
+    return render_template('index.html', recipe=recipes, title='Home', current_page=current_page, pages=pages)
+    
 
     
 @app.route('/create_recipe', methods=['GET', 'POST'])
