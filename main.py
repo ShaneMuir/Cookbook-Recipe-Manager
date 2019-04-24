@@ -27,6 +27,9 @@ def index():
     recipes = mongo.db.recipe.find().sort('_id', pymongo.ASCENDING).skip((current_page - 1)*page_limit).limit(page_limit)
     
     
+
+    
+    
     return render_template('index.html', recipe=recipes, title='Home', current_page=current_page, pages=pages)
     
 @app.route('/recipe/<recipe_id>', methods=['GET','POST'])
@@ -68,12 +71,31 @@ def filtered():
     pages = range(1, int(math.ceil(total / page_limit)) + 1)
     
     if request.method == "POST":
-        filter_by = []
-        filtered = request.form
-        for key , value in filtered.items():
-            filter_by.append({key: value})
-            results = mongo.db.recipe.find({'$and': filter_by })
-            return render_template('filter.html', title="Filtered Seach", results=results)
+        for i in request.form:
+            if i == "diet_labels":
+                filter_items = []
+                items = request.form.getlist('diet_labels') #get as a list []
+                my_key = request.form # get as a multdict 
+                for item in items: # iterate through the list
+                    for i in my_key: #grab key_name
+                        filter_items.append({i: item})
+                print(filter_items) 
+
+                results = mongo.db.recipe.find({'$and': filter_items })
+                return render_template('filter.html', title="Filtered Seach", results=results)
+            
+            if i == "health_labels":
+                filter_items = []
+                items = request.form.getlist('health_labels') #get as a list []
+                my_key = request.form # get as a multdict 
+                for item in items: # iterate through the list
+                    for i in my_key: #grab key_name
+                        filter_items.append({i: item})
+                print(filter_items) 
+
+                results = mongo.db.recipe.find({'$and': filter_items })
+                return render_template('filter.html', title="Filtered Seach", results=results)
+                
     
     recipes = mongo.db.recipe.find().sort('_id', pymongo.ASCENDING).skip((current_page - 1)*page_limit).limit(page_limit)
     return render_template('index.html', recipe=recipes, title='Home', current_page=current_page, pages=pages)
@@ -157,13 +179,15 @@ def delete_recipe(recipe_id):
     flash('Recipe deleted')
     return redirect(url_for('index'))
     
+
+        
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     """Function for handling the registration of users"""
     if 'logged_in' in session: #Check is user already logged in
         return redirect(url_for('index'))
     
-    form = RegistrationForm() 
+    form = RegistrationForm()
     if form.validate_on_submit():
             
         user = mongo.db.user

@@ -1,14 +1,9 @@
-{% extends 'base.html' %} {% block nav %} {% include '_navbar.html' %} {% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% block nav %} {% include '_navbar.html' %} {% endblock %} {% block content %}
 <div class="row tp-search">
     <div class="col hide-on-small-only m3">
-        <span class="v-align site-logo"><i class="small material-icons nav-icon">local_dining</i>Cookbook</span> 
-        {% with messages = get_flashed_messages() %}
-        {% if messages %} {% for message in messages %}
+        <span class="v-align site-logo"><i class="small material-icons nav-icon">local_dining</i>Cookbook</span> {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
         <p>{{ message }}</p>
-        {% endfor %} 
-        {% endif %}  {% endwith %}
+        {% endfor %} {% endif %} {% endwith %}
     </div>
     <div class="col s12 m9">
         <form action="{{ url_for('search') }}" class="search-form">
@@ -25,94 +20,46 @@
 <div class="row">
 
     <div class="col s12 m3">
-        
+
         <ul class="collapsible">
             <li class="active">
                 <div class="collapsible-header">Diet Labels<i class="material-icons dropdown-icon">arrow_drop_down</i></div>
                 <div class="collapsible-body">
-                    <form action="{{ url_for('filtered') }}" method="POST">
-                        <p>
-                             <label>
-                            <input name="diet_labels" type="radio" value="Low-Carb" />
-                              <span>Low-Carb</span>
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                                <input name="diet_labels" type="radio" value="Fat-Free" />
-                                    <span>Fat-Free</span>
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                            <input name="diet_labels" type="radio" value="Gluten-Free"/>
-                            <span>Gluten-Free</span>
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                            <input name="diet_labels" type="radio" value="High-Protein" />
-                            <span>High-Protein</span>
-                          </label>
-                        </p>
-                        <p>
-                            <label>
-                            <input name="diet_labels" type="radio" value="Balanced" />
-                            <span>Balanced</span>
-                          </label>
-                        </p>
-                   
-                        <button class="btn waves-effect waves-light filter-btn" type="submit">Submit</button>
+                    <form method="POST" action="{{ url_for('filtered') }}">
+
+                            <select multiple name="diet_labels">
+                              <option value="" disabled selected>Choose your options</option>
+                              <option value="Low-Carb">Low-Carb</option>
+                              <option value="Fat-Free">Fat-Free</option>
+                              <option value="Gluten-Free">Gluten-Free</option>
+                              <option value="High-Protein">High-Protein</option>
+                              <option value="Balanced">Balanced</option>
+                            </select>
+                            <button class="btn waves-effect waves-light filter-btn" type="submit">Submit</button>
                     </form>
                 </div>
             </li>
         </ul>
-        
+
+
         <ul class="collapsible">
             <li class="active">
                 <div class="collapsible-header">Health Labels<i class="material-icons dropdown-icon">arrow_drop_down</i></div>
                 <div class="collapsible-body">
-                    
-                                          <form action="{{ url_for('filtered') }}" method="POST">
-                        <p>
-                             <label>
-                            <input name="health_labels" type="radio" value="Sugar-Conscious" />
-                              <span>Sugar-Conscious</span>
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                                <input name="health_labels" type="radio" value="Peanut-Free" />
-                                    <span>Peanut-Free</span>
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                            <input name="health_labels" type="radio" value="Tree-Nut-Free"/>
-                            <span>Tree-Nut-Free</span>
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                            <input name="health_labels" type="radio" value="Alcohol-Free" />
-                            <span>Alcohol-Free</span>
-                          </label>
-                        </p>
-                        <p>
-                            <label>
-                            <input name="health_labels" type="radio" value="Vegan" />
-                            <span>Vegan</span>
-                          </label>
-                        </p>
-                          <p>
-                            <label>
-                            <input name="health_labels" type="radio" value="Vegetarian" />
-                            <span>Vegetarian</span>
-                          </label>
-                        </p>
-                   
-                        <button class="btn waves-effect waves-light filter-btn" type="submit">Submit</button>
+                 <form method="POST" action="{{ url_for('filtered') }}">
+
+                            <select multiple name="health_labels">
+                              <option value="" disabled selected>Choose your options</option>
+                              <option value="Sugar-Conscious">Sugar-Conscious</option>
+                              <option value="Peanut-Free">Peanut-Free</option>
+                              <option value="Tree-Nut-Free">Tree-Nut-Free</option>
+                              <option value="Alcohol-Free">Alcohol-Free</option>
+                              <option value="Vegan">Vegan</option>
+                              <option value="Vegetarian">Vegetarian</option>
+                            </select>
+                            <button class="btn waves-effect waves-light filter-btn" type="submit">Submit</button>
                     </form>
+                 
                 </div>
             </li>
         </ul>
@@ -161,13 +108,11 @@
 
         <ul class="pagination">
             <li class="disabled"><i class="material-icons">chevron_left</i></li>
-            {% for page_number in pages %}
-            {% if page_number == current_page %}
+            {% for page_number in pages %} {% if page_number == current_page %}
             <li class="active"><a>{{ page_number }}</a></li>
             {% else %}
             <li class="waves-effect"><a href="{{ url_for('index', current_page=page_number) }}">{{ page_number }}</a></li>
-            {% endif %}
-            {% endfor %}
+            {% endif %} {% endfor %}
             <li class="disabled"><i class="material-icons">chevron_right</i></li>
         </ul>
 
@@ -175,6 +120,4 @@
     </div>
     <!-- end of row -->
 </div>
-{% endblock %}
-
-{% block footer %} {% include '_footer.html' %} {% endblock %}
+{% endblock %} {% block footer %} {% include '_footer.html' %} {% endblock %}
