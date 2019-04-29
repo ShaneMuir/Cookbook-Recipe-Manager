@@ -36,7 +36,8 @@ label {
   background-color: #f26226;
   border: 2px solid #f26226; }
 
-input[type=text]:not(.browser-default):focus:not([readonly]) {
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]) {
   border-bottom: 1px solid #f26226;
   -webkit-box-shadow: 0 1px 0 0 #f26226;
   box-shadow: 0 1px 0 0 #f26226; }
@@ -51,7 +52,8 @@ input[type=text]:not(.browser-default):focus:not([readonly]) + label {
   color: #f26226; }
 
 input[type=text]:not(.browser-default),
-#db_query {
+#db_query,
+input[type=password]:not(.browser-default) {
   font-family: 'Josefin Sans', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -520,9 +522,6 @@ img.responsive-img {
     min-width: 500px;
     margin-top: 50%; } }
 @media only screen and (max-width: 768px) {
-  .inner-container {
-    margin-top: 50%; }
-
   .title {
     font-size: 70px; }
 

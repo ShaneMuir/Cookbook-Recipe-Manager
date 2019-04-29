@@ -3,6 +3,7 @@ from flask import Flask, render_template, redirect, request, url_for, flash, ses
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 from forms import LoginForm, RegistrationForm, RecipeForm
+from werkzeug.security import generate_password_hash, check_password_hash
 from pprint import pprint
 
 
@@ -184,7 +185,7 @@ def delete_recipe(recipe_id):
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     """Function for handling the registration of users"""
-    if 'logged_in' in session: #Check is user already logged in
+    if 'logged_in' == True:#Check is user already logged in
         return redirect(url_for('index'))
     
     form = RegistrationForm()
@@ -194,7 +195,10 @@ def register():
         dup_user = user.find_one({'name' : request.form['username'].title()})
             
         if dup_user is None:
-            user.insert_one({'name' : request.form['username'].title()})
+            hash_pass = generate_password_hash(request.form['password'])
+            user.insert_one({'name' : request.form['username'].title(),
+                'pass' : hash_pass
+            })
             session['username'] = request.form['username']
             session['logged_in'] = True
             return redirect(url_for('index'))
@@ -218,12 +222,13 @@ def user_login():
         user = mongo.db.user
         logged_in_user = user.find_one({'name' : request.form['username'].title()})
         
-        if logged_in_user is None:
-            flash('Incorrect username, please try again')
+        if logged_in_user:
+            if check_password_hash(logged_in_user['pass'], request.form['password']):
+                session['username'] = request.form['username']
+                session['logged_in'] = True
+                return redirect(url_for('index'))
+            flash('Sorry, incorrect password.')
             return redirect(url_for('user_login'))
-        session['username'] = request.form['username']
-        session['logged_in'] = True
-        return redirect(url_for('index'))
    
     return render_template('login.html', form=form, title='Login')
     
