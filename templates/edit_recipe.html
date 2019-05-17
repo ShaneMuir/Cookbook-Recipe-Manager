@@ -1,13 +1,10 @@
 {% extends 'base.html' %} {%block content %}
 
 <div class="bg-img">
-    <a href=" {{ url_for('index') }}">
-    <i class="material-icons close-icon">highlight_off</i>
-    </a>
+    <a href=" {{ url_for('index') }}"><i class="material-icons close-icon">highlight_off</i></a>
+    
     <div class="container">
         <h2 class="title">Edit Recipe</h2>
-
-        
         <form method="POST" action="" class="form-width">
             {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
             <p class="flashMessage">{{ message }}</p>
@@ -53,9 +50,7 @@
                     {{ form.hidden_tag() }} {{ form.source }}
                     <label for="source">Source URL</label>
                 </div>
-                
-
-                <button class="btn waves-effect waves-light my-btn section hoverable" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
+                <button class="btn waves-effect waves-light my-btn section hoverable" type="submit">Submit<i class="material-icons right">send</i></button>
             </div>
         </form>
     

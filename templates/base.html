@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
-    {% if title %}
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> {% if title %}
     <title>{{ title }} - Cook Book</title>
     {% else %}
     <title>Welcome to my Cook Book!</title>
     {% endif %}
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -26,11 +27,7 @@
 </head>
 
 <body>
-    {% block nav %} {% endblock %}
-    
-    {% block content %} {% endblock %}
-    
-    {% block footer %} {% endblock %}
+    {% block nav %} {% endblock %} {% block content %} {% endblock %} {% block footer %} {% endblock %}
 
 
     <!-- jQuery -->
@@ -41,17 +38,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- My own js -->
     <script type="text/javascript" src="{{ url_for('static', filename="js/main.js") }}"></script>
-    
+
     <script type="text/javascript">
-        $(document).ready(function(){
-        $('.collapsible').collapsible();
+        $(document).ready(function() {
+            $('.collapsible').collapsible();
         });
     </script>
-    
+
     <script type="text/javascript">
-       $(document).ready(function(){
-    $('select').formSelect();
-  });
+        $(document).ready(function() {
+            $('select').formSelect();
+        });
     </script>
-  
+
+    <script type="text/javascript">
+        $('#alert_close').click(function() {
+            $("#alert_box").fadeOut("slow", function() {});
+        });
+    </script>
+
 </body>

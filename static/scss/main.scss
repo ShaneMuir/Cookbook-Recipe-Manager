@@ -9,6 +9,14 @@ font-family: 'Josefin Sans', sans-serif;
 
 /* Global styles */
 
+::selection {
+    background: $prim-color;
+}
+
+::moz-selection {
+    background: $prim-color;
+}
+
 h1,
 h2,
 h3,
@@ -37,7 +45,7 @@ label {
 }
 
 input[type=text]:not(.browser-default):focus:not([readonly]),
-input[type=password]:not(.browser-default):focus:not([readonly]){
+input[type=password]:not(.browser-default):focus:not([readonly]) {
     border-bottom: 1px solid $prim-color;
     -webkit-box-shadow: 0 1px 0 0 $prim-color;
     box-shadow: 0 1px 0 0 $prim-color;
@@ -56,7 +64,7 @@ input[type=text]:not(.browser-default):focus:not([readonly])+label {
 
 input[type=text]:not(.browser-default),
 #db_query,
- input[type=password]:not(.browser-default){
+input[type=password]:not(.browser-default) {
     font-family: 'Josefin Sans', sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -73,8 +81,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 
 
-.select-wrapper input.select-dropdown:focus{
-        border-bottom: 1px solid $prim-color;
+.select-wrapper input.select-dropdown:focus {
+    border-bottom: 1px solid $prim-color;
 }
 
 .input-field .prefix.active {
@@ -115,6 +123,10 @@ input[type=text]:not(.browser-default):visited:not([readonly]) {
     box-shadow: 0 1px 0 0 $prim-color;
 }
 
+input[type=password]:not(.browser-default) {
+    color: $white;
+}
+
 input[type=text]:not(.browser-default) {
     @include text;
     color: $white;
@@ -142,6 +154,52 @@ a:hover {
 
 
 /* Home Page page styles */
+
+.icon_style {
+    position: absolute;
+    right: 10px;
+    top: 13px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer
+}
+
+#alert_box {
+    margin-bottom: 0;
+    width: 80%;
+}
+
+.alert {
+    font-size: 24px;
+    text-align: center;
+    margin: 0;
+}
+
+.alert-bg {
+    background-color: $sec-color;
+}
+
+.card-alert .card-content-alert {
+    padding: 10px;
+}
+
+.card-alert {
+    position: relative;
+    margin: 1rem 0 1rem 0;
+    -webkit-transition: -webkit-box-shadow .25s;
+    transition: -webkit-box-shadow .25s;
+    transition: box-shadow .25s;
+    transition: box-shadow .25s, -webkit-box-shadow .25s;
+    border-radius: 2px;
+}
+
+.card-alert {
+    webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+
 
 .site-logo {
     font-size: 30px;
@@ -287,20 +345,22 @@ i.small {
 }
 
 .bg-img {
-    background-color: rgba(39, 55, 73, .98);
+    background-color: rgba(39, 55, 73, 0.98);
     color: #fff;
-    overflow: hidden;
+    overflow: auto;
+    height: 100vh;
 }
 
 .title {
     font-family: 'Margarine', cursive;
-    color: $white;
+    color: #fff;
     font-style: normal;
     font-weight: 400;
     letter-spacing: 2px;
     margin-bottom: 20px;
     text-align: left;
     text-transform: uppercase;
+    margin-top: 20px;
 }
 
 .my-btn {
@@ -590,7 +650,7 @@ img.responsive-img {
 }
 
 @media only screen and (max-width: 768px) {
-    
+
     .title {
         font-size: 70px;
     }

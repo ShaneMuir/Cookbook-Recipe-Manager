@@ -4,6 +4,12 @@ font-family: 'Margarine', cursive;
 font-family: 'Josefin Sans', sans-serif;
 */
 /* Global styles */
+::selection {
+  background: #f26226; }
+
+::moz-selection {
+  background: #f26226; }
+
 h1,
 h2,
 h3,
@@ -99,6 +105,9 @@ input[type=text]:not(.browser-default):visited:not([readonly]) {
   -webkit-box-shadow: 0 1px 0 0 #f26226;
   box-shadow: 0 1px 0 0 #f26226; }
 
+input[type=password]:not(.browser-default) {
+  color: #fff; }
+
 input[type=text]:not(.browser-default) {
   font-family: 'Josefin Sans', sans-serif;
   font-style: normal;
@@ -126,6 +135,42 @@ a:hover {
   color: #2e62af; }
 
 /* Home Page page styles */
+.icon_style {
+  position: absolute;
+  right: 10px;
+  top: 13px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer; }
+
+#alert_box {
+  margin-bottom: 0;
+  width: 80%; }
+
+.alert {
+  font-size: 24px;
+  text-align: center;
+  margin: 0; }
+
+.alert-bg {
+  background-color: #2e62af; }
+
+.card-alert .card-content-alert {
+  padding: 10px; }
+
+.card-alert {
+  position: relative;
+  margin: 1rem 0 1rem 0;
+  -webkit-transition: -webkit-box-shadow .25s;
+  transition: -webkit-box-shadow .25s;
+  transition: box-shadow .25s;
+  transition: box-shadow .25s, -webkit-box-shadow .25s;
+  border-radius: 2px; }
+
+.card-alert {
+  webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2); }
+
 .site-logo {
   font-size: 30px;
   color: #2e62af;
@@ -248,7 +293,8 @@ i.small {
 .bg-img {
   background-color: rgba(39, 55, 73, 0.98);
   color: #fff;
-  overflow: hidden; }
+  overflow: auto;
+  height: 100vh; }
 
 .title {
   font-family: 'Margarine', cursive;
@@ -258,7 +304,8 @@ i.small {
   letter-spacing: 2px;
   margin-bottom: 20px;
   text-align: left;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  margin-top: 20px; }
 
 .my-btn {
   border-radius: 2px;
