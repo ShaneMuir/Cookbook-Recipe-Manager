@@ -1,13 +1,11 @@
-    <footer class="site-footer">
-        <div class="footer">
+<footer class="site-footer">
+    <div class="footer">
         <div class="container">
             <span class="ft-me">< / > By Shane Muirhead</span>
             {% if 'username' in session %}
             <span class="ft-user">User: {{ session['username'].title() }}</span>
             {% else%}
-            
             {% endif %}
         </div>
-        </div>
-    </footer>
-
+    </div>
+</footer>

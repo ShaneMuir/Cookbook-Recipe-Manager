@@ -1,8 +1,6 @@
 {% extends 'base.html' %} {%block content %}
-
 <div class="bg-img">
     <a href=" {{ url_for('index') }}"><i class="material-icons close-icon">highlight_off</i></a>
-    
     <div class="container">
         <h2 class="title">Edit Recipe</h2>
         <form method="POST" action="" class="form-width">
@@ -15,35 +13,35 @@
                     <label for="recipe_name">Recipe Name</label>
                 </div>
                 <div class="input-field col s12">
-                   {{ form.hidden_tag() }} {{ form.ingredients(class_="materialize-textarea") }}
-                   <label for="ingredients">Ingredients</label>
+                    {{ form.hidden_tag() }} {{ form.ingredients(class_="materialize-textarea") }}
+                    <label for="ingredients">Ingredients</label>
                 </div>
                 <div class="input-field col s12">
                     {{ form.hidden_tag() }} {{ form.description(class_="materialize-textarea") }}
                     <label for="description">Description</label>
                 </div>
                 <div class="input-field col s4">
-                     {{ form.hidden_tag() }} {{ form.cooking_time }}
+                    {{ form.hidden_tag() }} {{ form.cooking_time }}
                     <label for="cooking_time">Cooking Time</label>
                 </div>
                 <div class="input-field col s4">
-                   {{ form.hidden_tag() }} {{ form.serving_size }}
-                   <label for="serving_size">Serving Size</label>
+                    {{ form.hidden_tag() }} {{ form.serving_size }}
+                    <label for="serving_size">Serving Size</label>
                 </div>
                 <div class="input-field col s4">
-                     {{ form.hidden_tag() }} {{ form.calories }}
-                   <label for="calories">Calories</label>
+                    {{ form.hidden_tag() }} {{ form.calories }}
+                    <label for="calories">Calories</label>
                 </div>
                 <div class="input-field col s6">
-                   {{ form.hidden_tag() }} {{ form.health_labels(class_="materialize-textarea") }}
-                   <label  for="health_labels">Health Labels</label>
+                    {{ form.hidden_tag() }} {{ form.health_labels(class_="materialize-textarea") }}
+                    <label for="health_labels">Health Labels</label>
                 </div>
                 <div class="input-field col s6">
-                      {{ form.hidden_tag() }} {{ form.diet_labels(class_="materialize-textarea") }}
+                    {{ form.hidden_tag() }} {{ form.diet_labels(class_="materialize-textarea") }}
                     <label for="diet_labels">Diet Labels</label>
                 </div>
                 <div class="input-field col s12">
-                     {{ form.hidden_tag() }} {{ form.recipe_image }}
+                    {{ form.hidden_tag() }} {{ form.recipe_image }}
                     <label for="recipe_image">Recipe Image Address Link</label>
                 </div>
                 <div class="input-field col s12">
@@ -53,7 +51,5 @@
                 <button class="btn waves-effect waves-light my-btn section hoverable" type="submit">Submit<i class="material-icons right">send</i></button>
             </div>
         </form>
-    
     </div>
-
     {% endblock %}

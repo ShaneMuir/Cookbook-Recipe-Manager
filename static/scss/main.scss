@@ -38,6 +38,14 @@ label {
     color: $black;
 }
 
+.clear {
+    @include clear;
+}
+
+nav ul li {
+    padding: 0px 10px;
+}
+
 [type="radio"]:checked+span:after,
 [type="radio"].with-gap:checked+span:after {
     background-color: $prim-color;
@@ -70,8 +78,17 @@ input[type=password]:not(.browser-default) {
     font-weight: 400;
     letter-spacing: 2px;
     color: black;
+    width: 100%;
+}
+
+#db_query {
     width: 80%;
 }
+
+::placeholder {
+    color: #808080;
+}
+
 
 textarea.materialize-textarea:focus:not([readonly]) {
     border-bottom: 1px solid $prim-color;
@@ -155,6 +172,10 @@ a:hover {
 
 /* Home Page page styles */
 
+.left-align {
+    text-align: left !important;
+}
+
 .icon_style {
     position: absolute;
     right: 10px;
@@ -162,6 +183,28 @@ a:hover {
     font-size: 30px;
     color: white;
     cursor: pointer
+}
+
+.inner-card-text {
+    font-weight: 600;
+}
+
+.inner-card-row {
+    text-align: center;
+    margin: 0;
+}
+
+.inner-card-container {
+    width: 88%;
+    top: 20%;
+    position: absolute;
+}
+
+.inner-close-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: $prim-color;
 }
 
 #alert_box {
@@ -227,11 +270,12 @@ i.medium {
     -webkit-user-select: none;
     user-select: none;
     box-sizing: content-box;
-    padding: 0 10px;
+    padding: 0 20px;
     display: inline-block;
     text-decoration: none;
-    color: $black;
+    color: #000;
     border: 2px solid;
+    font-size: 20px;
     border-color: #f26226;
     outline: none;
     background-color: transparent;
@@ -264,6 +308,7 @@ i.small {
 .card .card-title {
     font-size: 21px;
     font-weight: 300;
+    text-align: center;
 }
 
 .collapsible-header .dropdown-icon {
@@ -442,8 +487,6 @@ nav i.material-icons {
     align-items: center;
 }
 
-
-
 .logo {
     font-size: 30px;
     color: $sec-color;
@@ -490,12 +533,40 @@ nav i.material-icons {
     border: 0px;
     font-weight: 500;
     color: #fff;
-    background-color: #f26226;
+    background-color: $prim-color;
     outline: none;
     cursor: pointer;
     position: relative;
     text-transform: uppercase;
     letter-spacing: 0.1em
+}
+
+.my-recipes {
+    border-radius: 2px;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    box-sizing: content-box;
+    font-size: 14px;
+    line-height: 42.88px;
+    height: 39.88px;
+    padding: 0 18px;
+    display: inline-block;
+    text-decoration: none;
+    border: 0px;
+    font-weight: 500;
+    color: #fff;
+    background-color: $sec-color;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.my-recipes:hover {
+    background-color: $prim-color;
 }
 
 nav ul a:hover {
@@ -545,6 +616,55 @@ nav ul a:hover {
 
 /* Single Recipe view styles */
 
+.page-container {
+    width: 90%;
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.restrict-btn {
+    padding: 2rem;
+    color: $sec-color;
+}
+
+.recipe-description {
+    padding: 2rem;
+    font-size: 22px;
+}
+
+
+.recipe-ingredients {
+    font-size: 22px;
+    padding: 0rem 2rem;
+}
+
+.ingredients-section {
+    padding: 0rem 2rem;
+}
+
+.labels {
+    font-size: 21px;
+}
+
+.user {
+    padding: 0rem 2rem;
+    font-size: 21px;
+}
+
+
+.user-section {
+    padding: 0rem 2rem;
+}
+
+.source-btn {
+    padding: 0rem 2rem;
+}
+
+.recipe-icons {
+    font-size: 22px;
+    padding: 2rem;
+}
+
 .btn-style {
     @include btn-style
 }
@@ -576,13 +696,15 @@ img.responsive-img {
 
 /* Home page media queries */
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 992px) {
     nav .sidenav-trigger {
-        float: right;
-        position: relative;
-        z-index: 1;
         height: 56px;
+        position: absolute;
+        right: 10px;
     }
+}
+
+@media only screen and (max-width: 600px) {
     .logo {
         font-size: 20px;
     }

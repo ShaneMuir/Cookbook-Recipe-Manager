@@ -1,8 +1,6 @@
 {% extends 'base.html' %} {%block content %}
-
 <div class="bg-img">
     <a href=" {{ url_for('index') }}"><i class="material-icons close-icon">highlight_off</i></a>
-
     <div class="container">
         <h2 class="title">Add Recipe</h2>
         <form method="POST" action="" class="form-width">
@@ -21,38 +19,35 @@
                     <label for="description">Description</label>
                 </div>
                 <div class="input-field col s4">
-                {{ form.hidden_tag() }} {{ form.cooking_time(placeholder="55") }}
-                <label for="cooking_time">Cooking Time</label>
+                    {{ form.hidden_tag() }} {{ form.cooking_time(placeholder="55") }}
+                    <label for="cooking_time">Cooking Time</label>
+                </div>
+                <div class="input-field col s4">
+                    {{ form.hidden_tag() }} {{ form.serving_size(placeholder="4") }}
+                    <label for="serving_size">Serving Size</label>
+                </div>
+                <div class="input-field col s4">
+                    {{ form.hidden_tag() }} {{ form.calories(placeholder="445") }}
+                    <label for="calories">Calories</label>
+                </div>
+                <div class="input-field col s6">
+                    {{ form.hidden_tag() }} {{ form.health_labels(class_="materialize-textarea", placeholder="Chcicken, Meat") }}
+                    <label for="health_labels">Health Labels</label>
+                </div>
+                <div class="input-field col s6">
+                    {{ form.hidden_tag() }} {{ form.diet_labels(class_="materialize-textarea", placeholder="Low-fat, High-Protein") }}
+                    <label for="diet_labels">Diet Labels</label>
+                </div>
+                <div class="input-field col s12">
+                    {{ form.hidden_tag() }} {{ form.recipe_image(required=true, placeholder="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/user-collections/my-colelction-image/2015/12/recipe-image-legacy-id--1274503_8.jpg?itok=y2r-R0BV") }}
+                    <label for="recipe_image">Recipe Image Address Link</label>
+                </div>
+                <div class="input-field col s12">
+                    {{ form.hidden_tag() }} {{ form.source(placeholder="https://www.bbcgoodfood.com/recipes/1167651/chicken-and-chorizo-jambalaya") }}
+                    <label for="source">Source URL</label>
+                </div>
+                <button class="btn waves-effect waves-light my-btn section hoverable" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
             </div>
-            <div class="input-field col s4">
-                {{ form.hidden_tag() }} {{ form.serving_size(placeholder="4") }}
-                <label for="serving_size">Serving Size</label>
-            </div>
-            <div class="input-field col s4">
-                {{ form.hidden_tag() }} {{ form.calories(placeholder="445") }}
-                <label for="calories">Calories</label>
-            </div>
-            <div class="input-field col s6">
-                {{ form.hidden_tag() }} {{ form.health_labels(class_="materialize-textarea", placeholder="Chcicken, Meat") }}
-                <label for="health_labels">Health Labels</label>
-            </div>
-            <div class="input-field col s6">
-                {{ form.hidden_tag() }} {{ form.diet_labels(class_="materialize-textarea", placeholder="Low-fat, High-Protein") }}
-                <label for="diet_labels">Diet Labels</label>
-            </div>
-            <div class="input-field col s12">
-                {{ form.hidden_tag() }} {{ form.recipe_image(required=true, placeholder="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/user-collections/my-colelction-image/2015/12/recipe-image-legacy-id--1274503_8.jpg?itok=y2r-R0BV") }}
-                <label for="recipe_image">Recipe Image Address Link</label>
-            </div>
-            <div class="input-field col s12">
-                {{ form.hidden_tag() }} {{ form.source(placeholder="https://www.bbcgoodfood.com/recipes/1167651/chicken-and-chorizo-jambalaya") }}
-                <label for="source">Source URL</label>
-            </div>
-
-            <button class="btn waves-effect waves-light my-btn section hoverable" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
+        </form>
     </div>
-    </form>
-
-</div>
-
-{% endblock %}
+    {% endblock %}

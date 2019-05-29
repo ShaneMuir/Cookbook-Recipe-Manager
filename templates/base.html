@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,27 +8,23 @@
     {% else %}
     <title>Welcome to my Cook Book!</title>
     {% endif %}
-
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Lightbox -->
-    <link href="//cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+    
     <!-- My own styles -->
     <link rel="stylesheet" href="{{ url_for('static', filename="scss/main.css") }}" type="text/css" />
 
-    <!-- Favicon -->
+    <!-- Site Favicon -->
     <link rel="shortcut icon" type="image/ico" href="{{ url_for('static', filename="img/favicon.ico") }}" />
-
-
 </head>
 
 <body>
     {% block nav %} {% endblock %} {% block content %} {% endblock %} {% block footer %} {% endblock %}
-
-
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <!-- lightbox -->
@@ -38,23 +33,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- My own js -->
     <script type="text/javascript" src="{{ url_for('static', filename="js/main.js") }}"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.collapsible').collapsible();
-        });
-    </script>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('select').formSelect();
-        });
-    </script>
-
-    <script type="text/javascript">
-        $('#alert_close').click(function() {
-            $("#alert_box").fadeOut("slow", function() {});
-        });
-    </script>
-
 </body>
