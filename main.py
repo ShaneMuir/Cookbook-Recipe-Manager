@@ -8,6 +8,8 @@ from pprint import pprint
 
 app = Flask(__name__)
 
+#test
+
 app.config["MONGO_DBNAME"] = "cookbook"
 app.config["MONGO_URI"] = os.getenv("MONGO_URI", "monogodb://localhost")
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
