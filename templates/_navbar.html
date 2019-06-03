@@ -6,7 +6,7 @@
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     {% if 'username' in session %}
-                    <li><a class="my-recipes" href="#">My Recipes</a></li>
+                    <li><a class="my-recipes" href="{{ url_for('profile_page', user_id=current_user._id) }}">My Recipes</a></li>
                     <li><a class="add-recipe" href="{{ url_for('create_recipe') }}">Add recipe</a></li>
                     <li><a class="no-hvr" href="{{ url_for('logout') }}">Logout</a></li>
                     {% else %}
@@ -19,6 +19,8 @@
 
     <ul class="sidenav" id="mobile-demo">
         {% if 'username' in session %}
+        <li><a class="my-recipes" href="{{ url_for('profile_page', user_id=current_user._id) }}">My Recipes</a></li>
+        <li><a class="add-recipe" href="{{ url_for('create_recipe') }}">Add recipe</a></li>
         <li><a href="{{ url_for('logout') }}">Logout</a></li>
         {% else %}
         <li><a href="{{ url_for('user_login') }}">Login</a></li>
@@ -26,4 +28,3 @@
         {% endif %}
     </ul>
 </header>
-  
