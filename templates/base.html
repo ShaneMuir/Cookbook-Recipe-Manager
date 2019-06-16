@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"> {% if title %}
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% if title %}
     <title>{{ title }} - Cook Book</title>
     {% else %}
     <title>Welcome to my Cook Book!</title>
@@ -11,14 +12,11 @@
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
     <!-- My own styles -->
     <link rel="stylesheet" href="{{ url_for('static', filename="scss/main.css") }}" type="text/css" />
-
     <!-- Site Favicon -->
     <link rel="shortcut icon" type="image/ico" href="{{ url_for('static', filename="img/favicon.ico") }}" />
 </head>
@@ -27,8 +25,6 @@
     {% block nav %} {% endblock %} {% block content %} {% endblock %} {% block footer %} {% endblock %}
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <!-- lightbox -->
-    <script src="//cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <!-- Materialize JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- My own js -->

@@ -3,7 +3,7 @@
     <a href=" {{ url_for('index') }}"><i class="material-icons close-icon">highlight_off</i></a>
     <div class="container">
         <h2 class="title">Add Recipe</h2>
-        <form method="POST" action="" class="form-width">
+        <form method="POST" class="form-width">
             <div class="row">
                 <div class="input-field col s12">
                     {{ form.hidden_tag() }} {{ form.recipe_name(placeholder="Chicken & chorizo jambalaya") }}
@@ -46,7 +46,7 @@
                     {{ form.hidden_tag() }} {{ form.source(placeholder="https://www.bbcgoodfood.com/recipes/1167651/chicken-and-chorizo-jambalaya") }}
                     <label for="source">Source URL</label>
                 </div>
-                <button class="btn waves-effect waves-light my-btn section hoverable" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
+                <button class="btn waves-effect waves-light my-btn section hoverable" type="submit">Submit<i class="material-icons right">send</i></button>
             </div>
         </form>
     </div>

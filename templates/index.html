@@ -76,44 +76,21 @@
     </div>
 
     <div class="col s12 m9">
+
         {% for r in recipe %}
         <div class="col s12 m4">
             <div class="card hoverable">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="{{ r['recipe_image'] }}">
+                <div class="card-image">
+                    <img src="{{ r['recipe_image'] }}">
                 </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4 left-align">{{ r.recipe_name }}<i class="material-icons right">arrow_drop_up</i></span>
-                    <p><a href="{{url_for('recipe', recipe_id=r._id)}}">View Recipe</a></p>
+                <div class="card-title">
+                    <span>{{ r.recipe_name }}</span>
                 </div>
-                <div class="card-reveal">
-                    <span class="card-title" id="inner-title">{{ r.recipe_name }}<i class="material-icons inner-close-icon">close</i></span>
-                    <div class="inner-card-container">
-                        <div class="row inner-card-row">
-                            <div class="col s4 ">
-                                <i class="medium material-icons inner-card-icon">timer</i>
-                            </div>
-                            <div class="col s4">
-                                <i class="medium material-icons  inner-card-icon">local_dining</i>
-                            </div>
-                            <div class="col s4">
-                                <i class="medium material-icons  inner-card-icon">whatshot</i>
-                            </div>
-                        </div>
-                        <div class="row inner-card-row">
-                            <div class="col s4">
-                                <p class="valign-wrapper inner-card-text"> Time: {{ r.cooking_time }} Min</p>
-                            </div>
-                            <div class="col s4">
-                                <p class="valign-wrapper  inner-card-text">Servings: {{ r.serving_size }}</p>
-                            </div>
-                            <div class="col s4">
-                                <p class="valign-wrapper  inner-card-text">Calories: {{ r.calories }}</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="card-action">
+                    <a href="{{ url_for('recipe', recipe_id=r._id) }}">View Reicpe</a>
                 </div>
             </div>
+
         </div>
         {% endfor %}
 

@@ -1,8 +1,6 @@
 # Cookbook
 Built with Flask and MongoDB
 
-
-
 ##### Database data
 I credit the site listed below as this is where I pulled my recipe json data from which then I manipulated and edited so that it was fit for my project.
 As this project is for education purposes only and will not be going publicly live under a registered domain, and that I have edited and adapted the data that 

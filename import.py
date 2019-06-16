@@ -1,5 +1,5 @@
 #Import the pymongo package
-import pymongo
+import pymongo, mongo
 #Import Python os module
 import os, requests
 from pprint import pprint
@@ -48,8 +48,6 @@ recipe = {
             
         }
     }
-
-
     
 pprint(recipe)
 i = input("Y/N: ")

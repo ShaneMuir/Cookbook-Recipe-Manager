@@ -14,6 +14,7 @@ app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+
 @app.route('/')
 def index():
     """Route lets users see all recipes"""
@@ -25,13 +26,19 @@ def index():
     
     if session:
         current_user = mongo.db.user.find_one({'name': session['username'].title()})
+        return render_template('index.html', recipe=recipes, title='Home', current_page=current_page, pages=pages, current_user=current_user)
 
-    return render_template('index.html', recipe=recipes, title='Home', current_page=current_page, pages=pages, current_user=current_user)
+    return render_template('index.html', recipe=recipes, title='Home', current_page=current_page, pages=pages)
     
 @app.route('/recipe/<recipe_id>', methods=['GET','POST'])
 def recipe(recipe_id):
     """Route for viewing a single recipe"""
     a_recipe =  mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)})
+    
+    if session:
+        current_user = mongo.db.user.find_one({'name': session['username'].title()})
+        return render_template('recipe.html', recipe=a_recipe, title=a_recipe['recipe_name'], current_user=current_user)
+        
     return render_template('recipe.html', recipe=a_recipe, title=a_recipe['recipe_name'])
     
 @app.route('/profile/<user_id>')

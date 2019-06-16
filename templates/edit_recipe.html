@@ -1,12 +1,9 @@
 {% extends 'base.html' %} {%block content %}
 <div class="bg-img">
-    <a href=" {{ url_for('index') }}"><i class="material-icons close-icon">highlight_off</i></a>
+    <a href=" {{ url_for('recipe', recipe_id=recipe._id) }}"><i class="material-icons close-icon">highlight_off</i></a>
     <div class="container">
         <h2 class="title">Edit Recipe</h2>
-        <form method="POST" action="" class="form-width">
-            {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
-            <p class="flashMessage">{{ message }}</p>
-            {% endfor %} {% endif %} {% endwith %}
+        <form method="POST" class="form-width">
             <div class="row">
                 <div class="input-field col s12">
                     {{ form.hidden_tag() }} {{ form.recipe_name }}
@@ -52,4 +49,4 @@
             </div>
         </form>
     </div>
-    {% endblock %}
+{% endblock %}

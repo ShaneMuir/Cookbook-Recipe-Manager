@@ -52,6 +52,14 @@ nav ul li {
     border: 2px solid $prim-color;
 }
 
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+    color: $prim-color;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):hover{
+    color: $sec-color;
+}
+
 input[type=text]:not(.browser-default):focus:not([readonly]),
 input[type=password]:not(.browser-default):focus:not([readonly]) {
     border-bottom: 1px solid $prim-color;
@@ -308,7 +316,8 @@ i.small {
 .card .card-title {
     font-size: 21px;
     font-weight: 300;
-    text-align: center;
+    text-align: left;
+    padding: 16px 24px;
 }
 
 .collapsible-header .dropdown-icon {
@@ -749,9 +758,6 @@ img.responsive-img {
     }
 }
 
-
-/* Navbar media queries */
-
 @media only screen and (min-width: 601px) {
     nav,
     nav .nav-wrapper i,
@@ -762,6 +768,14 @@ img.responsive-img {
     }
 }
 
+@media only screen and (min-width: 1824px) {
+    nav {
+        height: 100px;
+        line-height: 100px;
+    }
+
+}
+
 /* Login/register Media Queries */
 
 @media only screen and (min-width: 1600px) {
@@ -769,6 +783,13 @@ img.responsive-img {
         min-width: 500px;
         margin-top: 50%;
     }
+    .tp-search {
+        height: 10vh;
+    }
+    .inner-close-icon {
+    top: 24px;
+    right: 24px;
+}
 }
 
 @media only screen and (max-width: 768px) {
