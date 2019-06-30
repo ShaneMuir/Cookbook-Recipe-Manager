@@ -2,11 +2,6 @@
 "mixins";
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Margarine');
 
-/*
-font-family: 'Margarine', cursive;
-font-family: 'Josefin Sans', sans-serif;
-*/
-
 /* Global styles */
 
 ::selection {
@@ -702,6 +697,27 @@ img.responsive-img {
     width: 100%;
 }
 
+/* Profile page styles */
+
+.heading {
+    text-align: left;
+    color: $sec-color;
+    padding: 20px 0px 10px 0px;
+    
+}
+
+.profile-container {
+    width: 250px;
+    margin: auto;
+}
+
+.profile-img {
+    margin-top: 2em;
+}
+
+.text {
+    font-size: 20px;
+}
 
 /* Home page media queries */
 
