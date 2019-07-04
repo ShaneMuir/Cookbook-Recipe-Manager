@@ -627,7 +627,28 @@ img.responsive-img {
 .text {
   font-size: 20px; }
 
-/* Home page media queries */
+/* Error pages styles */
+.error-title {
+  text-align: center;
+  color: #f26226; }
+
+.error-sec-title {
+  text-align: center;
+  color: #2e62af; }
+
+.error-text {
+  text-align: center;
+  color: black; }
+
+.error-container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  overflow: hidden; }
+
+.error-link {
+  text-decoration: underline; }
+
 @media only screen and (max-width: 992px) {
   nav .sidenav-trigger {
     height: 56px;
@@ -684,7 +705,6 @@ img.responsive-img {
   nav {
     height: 100px;
     line-height: 100px; } }
-/* Login/register Media Queries */
 @media only screen and (min-width: 1600px) {
   .inner-container {
     min-width: 500px;
@@ -748,6 +768,9 @@ img.responsive-img {
     font-size: 3rem; }
 
   .middle-container {
-    width: 100%; } }
+    width: 100%; }
+
+  .error-title, .error-sec-title {
+    font-size: 36px; } }
 
 /*# sourceMappingURL=main.css.map */

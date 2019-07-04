@@ -51,7 +51,7 @@ nav ul li {
     color: $prim-color;
 }
 
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):hover{
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):hover {
     color: $sec-color;
 }
 
@@ -703,7 +703,7 @@ img.responsive-img {
     text-align: left;
     color: $sec-color;
     padding: 20px 0px 10px 0px;
-    
+
 }
 
 .profile-container {
@@ -719,7 +719,35 @@ img.responsive-img {
     font-size: 20px;
 }
 
-/* Home page media queries */
+
+/* Error pages styles */
+
+.error-title {
+    text-align: center;
+    color: $prim-color;
+
+}
+
+.error-sec-title {
+    text-align: center;
+    color: $sec-color;
+}
+
+.error-text {
+    text-align: center;
+    color: black;
+}
+
+.error-container {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    overflow: hidden;
+}
+
+.error-link {
+    text-decoration: underline;
+}
 
 @media only screen and (max-width: 992px) {
     nav .sidenav-trigger {
@@ -792,7 +820,6 @@ img.responsive-img {
 
 }
 
-/* Login/register Media Queries */
 
 @media only screen and (min-width: 1600px) {
     .inner-container {
@@ -803,9 +830,9 @@ img.responsive-img {
         height: 10vh;
     }
     .inner-close-icon {
-    top: 24px;
-    right: 24px;
-}
+        top: 24px;
+        right: 24px;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -868,5 +895,8 @@ img.responsive-img {
     }
     .middle-container {
         width: 100%;
+    }
+    .error-title, .error-sec-title {
+        font-size: 36px;
     }
 }
