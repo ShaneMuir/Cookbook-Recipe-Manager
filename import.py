@@ -6,7 +6,7 @@ from pprint import pprint
 
 #config vars
 MONGODB_URI = os.getenv("MONGO_URI")
-DBS_NAME = "organic"
+DBS_NAME = "cookbook"
 COLLECTION_NAME = "recipe"
 
 #Function to connection to our DB

@@ -48,7 +48,7 @@ def profile_page(user_id):
         return redirect(url_for('index'))
     
     current_user = mongo.db.user.find_one({"_id": ObjectId(user_id)})
-    recipes = mongo.db.recipe.find({'username': current_user['name']})
+    recipes = mongo.db.recipe.find({'username': current_user['name']}).sort('_id', pymongo.ASCENDING)
     count = mongo.db.recipe.find({'username': current_user['name']}).count()
     
     return render_template('profile.html', current_user=current_user, recipes=recipes, count=count, title="Profile Page")
@@ -95,31 +95,31 @@ def filtered():
                 items = request.form.getlist('diet_labels') #get as a list []
                 my_key = request.form # get as a multdict 
                 for item in items: # iterate through the list
-                    for i in my_key: #grab key_name
-                        filter_items.append({i: item})
-                results = mongo.db.recipe.find({'$and': filter_items })
-                total_results =  mongo.db.recipe.find({'$and': filter_items }).count()
+                    for key in my_key: #grab key_name
+                        filter_items.append({key: item})
+                        results = mongo.db.recipe.find({'$and': [{'$or': filter_items}]})
+                total_results = mongo.db.recipe.find({'$and': [{'$or': filter_items}]}).count()
                 if 'logged_in' in session:
                     current_user = mongo.db.user.find_one({'name': session['username'].title()})
                     return render_template('filter.html', title="Filtered Search", results=results, total_results=total_results, current_user=current_user)
                 else:
                     return render_template('filter.html', title="Filtered Search", results=results, total_results=total_results)
-            
-            if i == "health_labels":
+            elif i == "health_labels":
                 filter_items = []
                 items = request.form.getlist('health_labels') #get as a list []
+                print(items)
                 my_key = request.form # get as a multdict 
                 for item in items: # iterate through the list
-                    for i in my_key: #grab key_name
-                        filter_items.append({i: item})
-                results = mongo.db.recipe.find({'$and': filter_items })
-                total_results = mongo.db.recipe.find({'$and': filter_items }).count()
+                    for key in my_key: #grab key_name
+                        filter_items.append({key: item})
+                        results = mongo.db.recipe.find({'$and': [{'$or': filter_items}]})
+                total_results = mongo.db.recipe.find({'$and': [{'$or': filter_items}]}).count()
                 if 'logged_in' in session:
                     current_user = mongo.db.user.find_one({'name': session['username'].title()})
                     return render_template('filter.html', title="Filtered Search", results=results, total_results=total_results, current_user=current_user)
                 else:
                     return render_template('filter.html', title="Filtered Search", results=results, total_results=total_results)
-                
+                    
     recipes = mongo.db.recipe.find().sort('_id', pymongo.ASCENDING).skip((current_page - 1)*page_limit).limit(page_limit)
     return render_template('index.html', recipe=recipes, title='Home', current_page=current_page, pages=pages)
 
