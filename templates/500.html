@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container error-container">
+    <div class="row">
+        <div class="col">
+            <h1 class="error-title">Oh No</h1>
+            <h2 class="error-sec-title">There seems to be an unexpected error!</h2>
+            <p class="error-text"><a class="error-link" href="{{ url_for('index') }}">Click this line to go back to the websites homepage.</a></p>
+            <p class="error-text">The admin of this site has been notified of this error and a log has been made.</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
