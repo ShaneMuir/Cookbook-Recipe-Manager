@@ -272,9 +272,20 @@ def logout():
     """Logs the user out and redirects to home"""
     session.clear() # Kill session
     return redirect(url_for('index'))
+    
+
+@app.errorhandler(404)
+def page_not_found(e):
+    """Route for handling 404 errors"""
+    return render_template('404.html', title="Page Not Found!"), 404
+    
+@app.errorhandler(500)
+def internal_server_error(e):
+    """Route for handling 500 errors"""
+    return render_template('500.html', title="Internal Server Error!"), 500
                 
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
     port=int(os.environ.get('PORT')),
-    debug=True)
+    debug=False)
