@@ -310,4 +310,4 @@ Credit is due to the following names. I would like to thank each and everyone wh
 - Head First Python: A Brain-Friendly Guide **Paul Barry**
 
 # LICENSE
-This project is release under the **MIT** licence. For more info [here.]()
+This project is release under the **MIT** licence. For more info [here.](https://raw.githubusercontent.com/ShaneMuir/Milestone-4/master/LICENSE.md)
