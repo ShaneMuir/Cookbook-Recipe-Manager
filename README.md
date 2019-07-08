@@ -2,7 +2,7 @@
 ## [Demo Here](https://milestone4.herokuapp.com/)
 What is 'Recipe Manager | Cookbook' - It's an app built with Flask and MongoDB. In this application I use technology learnt on my coding journey to demonstrate how a document based database can be ultilise efficiently and effective to create simple yet effective scalable apps on the web. The aim of this project is to showcase my tech learnt so far from the course. 
 
-Throughout this project I will make use of [Python]([https://www.python.org/](https://www.python.org/)) a high end programming language along with [Flask]([http://flask.pocoo.org/](http://flask.pocoo.org/)) a Python micro framework and [MongoDB]([https://www.mongodb.com/](https://www.mongodb.com/)) a document based database. 
+Throughout this project I will make use of [Python](https://www.python.org/) a high end programming language along with [Flask](http://flask.pocoo.org/) a Python micro framework and [MongoDB](https://www.mongodb.com/) a document based database. 
 
 With these tools I will be able to showcase all I have learnt from Code Institute so far, majority of my back-end logic will be written in Python running on the Flask framework using a document based database.
 
@@ -27,9 +27,15 @@ Reason's why Recipe Manager | Cookbook was created.
 
 ---
 ### Wireframes 
-[Desktop View](#)
-[Tablet View](#)
-[Mobile View](#)
+[Desktop View](https://raw.githubusercontent.com/ShaneMuir/Milestone-4/master/wireframes/Cookbook%20Desktop%20homepage.png)
+[Tablet View](https://raw.githubusercontent.com/ShaneMuir/Milestone-4/master/wireframes/Cookbook%20Tablet%20homepage.png)
+[Mobile View](https://raw.githubusercontent.com/ShaneMuir/Milestone-4/master/wireframes/Cookbook%20Mobile.png)
+
+---
+### Database Schema
+In this project before starting on development I begin planning my database schema from how I wanted my database to work. Throughout the project design my scehma has changed slightly but has given me good knowledge of how my database needed to be set out. 
+
+See my database Schema [here.](#)
 
 ---
 ### Cookbooks Functionality
@@ -49,20 +55,20 @@ My app is capable of locking down user data and only users who created that reci
 
 ---
 ### Technology Used
-- [Python 3]([https://www.python.org/download/releases/3.0/](https://www.python.org/download/releases/3.0/))
-- [Flask 1.0.2]([http://flask.pocoo.org/](http://flask.pocoo.org/))
-- [HTML5]([https://en.wikipedia.org/wiki/HTML5](https://en.wikipedia.org/wiki/HTML5))
-- [CCS3/SCSS]([https://sass-lang.com/](https://sass-lang.com/))
-- [Materialize]([https://materializecss.com/](https://materializecss.com/))
-- [JavaScript]([https://www.javascript.com/](https://www.javascript.com/))
-- [jQuery]([https://jquery.com/](https://jquery.com/))
-- [MongoDB]([https://www.mongodb.com/](https://www.mongodb.com/))
-- [mLab]([https://mlab.com/](https://mlab.com/))
+- [Python 3](https://www.python.org/download/releases/3.0/)
+- [Flask 1.0.2](http://flask.pocoo.org/)
+- [HTML5](https://en.wikipedia.org/wiki/HTML5)
+- [CCS3/SCSS](https://sass-lang.com/)
+- [Materialize](https://materializecss.com/)
+- [JavaScript](https://www.javascript.com/)
+- [jQuery](https://jquery.com/)
+- [MongoDB](https://www.mongodb.com/)
+- [mLab](https://mlab.com/)
 
 ---
 #### Database data
 
-All my recipe data was source from [**Edam**]([https://developer.edamam.com/edamam-recipe-api](https://developer.edamam.com/edamam-recipe-api)) a free recipe search API that can provide recipe data from calling a API endpoint and recieving the data back as [JSON]([https://www.json.org/](https://www.json.org/)). The way I ultilise this API was by using Python requests and creating a simple but yet effective CLI (Command Line Interface) script which was taken and adapted from the course material. In the course we made a program to work with MongoDB via the CLI. By creating a script to request data from the API I then adapt the Mongo CLI program to then inject my retrieved data and insert it into a Mongo collection. My import script can be found within this repo.
+All my recipe data was source from [**Edam**](https://developer.edamam.com/edamam-recipe-api) a free recipe search API that can provide recipe data from calling a API endpoint and recieving the data back as [JSON](https://www.json.org/). The way I ultilise this API was by using Python requests and creating a simple but yet effective CLI (Command Line Interface) script which was taken and adapted from the course material. In the course we made a program to work with MongoDB via the CLI. By creating a script to request data from the API I then adapt the Mongo CLI program to then inject my retrieved data and insert it into a Mongo collection. My import script can be found within this repo.
 
 ---
 ### Things that could be improve if had more time
@@ -76,4 +82,4 @@ All my recipe data was source from [**Edam**]([https://developer.edamam.com/edam
 
 ##### Why I built 'Recipe Manager | Cookbook'
 
-The main reasoning behind the project was inspired by Code Institute as the brief was to create a cookbook type project. But my main inspiration came from [Blue Apron]([https://www.blueapron.com/cookbook](https://www.blueapron.com/cookbook)). For days before embarking on development with my milestone I visited and navigated around alot of recipe sites and tried looking for functionality that sites were lacking and put my main focus on this. I wanted to create something for users that wasn't already out there. For free. This project will be release under MIT and I will detail below within this document how you as a developer can get a copy or clone my app and expand on it or even make it your own. I will explain in detail how I used the tech and what I used to develop and deploy my app. 
+The main reasoning behind the project was inspired by Code Institute as the brief was to create a cookbook type project. But my main inspiration came from [Blue Apron](https://www.blueapron.com/cookbook). For days before embarking on development with my milestone I visited and navigated around alot of recipe sites and tried looking for functionality that sites were lacking and put my main focus on this. I wanted to create something for users that wasn't already out there. For free. This project will be release under MIT and I will detail below within this document how you as a developer can get a copy or clone my app and expand on it or even make it your own. I will explain in detail how I used the tech and what I used to develop and deploy my app. 
