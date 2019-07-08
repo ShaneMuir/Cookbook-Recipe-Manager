@@ -98,11 +98,17 @@ I would work in small sprints where every step in my development I would ensure 
 
 Doing this meant after a while the error codes became more familiar to me. And from this debugging each error become less time consuming. 
 
+---
+
 **Testing Python** - When writing Python code I would normally write this is small chunks and do any routine testing from the CLI and where needed use the Python Interpreter to test any functions or statements. 
+
+---
 
 **Testing Flask Views** - In Flask each app's route uses a view template from my app structure these views were tested throughout every stage within my development process. Where needed I would test each view worked as expected when added new code or functionality to my app.
 
 When passing any data down to the view I would firstly always ensure the data is there via using extra code within the back-end before sending down the data in the request. For example if I wanted to load my recipe collection in the back-end and send it to the view I would first ensure the data was loaded correctly by perform some back-end logic then pass this data to the view template whilst also checking the data was sent correctly to the front-end by perform the same back-end tests but on the front end before designing and displaying the mark up how I wanted it. 
+
+---
 
 **Testing the database** - Getting my data collections right was the trickiest part of this project. As through developing my application my database schema was constantly changing to the requirements of my app. Where multiple changes had to be made to the database in order for all my app's functionality to work properly.
 
@@ -145,6 +151,8 @@ coll.insert_one(recipe)
 ```
 This is how I collected my recipe data to play about with at the beginning of my app development in order to get the UPDATE, DELETE and READ methods working within my app. 
 
+---
+
 **Testing CRUD**
 
 **READ**
@@ -168,6 +176,8 @@ To test my create functionality of my app I would continuously fill out a recipe
 Once my CRUD functionality was in place I tested each form multiple times and tried to break each field or manipulate each form to perform unexpected. I have had my apps functionality tested multiple times by friends, family and everyone over at Slack who took the time out to try break my app. Where bugs were identified I made a note and fixed each issue.
 
 From this I am confident that my CRUD functionality in my app is all working and without any bugs or errors being produced. In the case the app does crash or error there is measures in place to log the error, time/date, and user details and email this over to the admin for investigation.
+
+---
 
 **Authentication & Authorisation**
 To allow for user restrictions and page restrictions in my app I needed to allow for user registration. Initially I just allowed for the User to register with a username and this would then be captured and inserted into my user collection against a user_id. 
@@ -202,11 +212,15 @@ In the views being able to restrict certain mark up was a case of using the Jinj
 ```
 So here I was able to check if `logged_in` was in session and if so, if the username logged in matched the creator of that recipe then said user was able to view certain elements within my app.
 
+---
+
 **Responsiveness** - My app is fully responsive, through the entire development and design process I continuously tested my app under Chrome Developer tools and testing various different screens sizes. By this I was able to perform periodic checks throughout the development process to ensure that my app was responsive across all device screens ranging from extra small to extra large. Where needed I I just media queries to fix any resolution issues or responsiveness issues. I have built my app on the [Materialize CSS framework.](https://materializecss.com/) A modern responsive front-end framework based on Material Design but where custom design has been made I have added additional CSS within my own file to adding custom design to my app. 
 
 My app has been testing by various student from the Slack community and by friends and family members where needed notes were made and identified bugs were fixed. 
 
 From doing this I have been able to confidently say that my app is fully responsiveness across all devices. 
+
+---
 
 **Browser compatibility** 
 
@@ -220,4 +234,78 @@ My app will be fully functional across all major modern browsers. I have tested 
 - [IE Edge](https://www.microsoft.com/en-gb/windows/microsoft-edge)
 - [Safari](https://support.apple.com/en_GB/downloads/safari)
 - [Chrome Mobile](https://chrome.en.softonic.com/)
+
+---
+
+### Resource Sites Used
+- [Edam](https://developer.edamam.com/edamam-docs-recipe-api)
+- [Materialize Icons](https://materializecss.com/icons.html)
+- [Unplsash](https://unsplash.com/)
+- [Materialize Docs](https://materializecss.com/)
+- [Flask Docs](http://flask.pocoo.org/docs/1.0/)
+- [Mongo Docs](https://docs.mongodb.com/)
+- [Slack](https://slack.com/intl/en-gb/)
+- [Stack Overflow](https://stackoverflow.com/)
+- [Google](https://google.com/)
+- [YouTube](https://www.youtube.com/)
+
+---
+
+#### HTML & CSS
+All my HTML and CSS is valid, checked with the following validators
+
+- [HTML Validator](https://validator.w3.org/)
+-  [CSS Validator](https://jigsaw.w3.org/css-validator/)
+
+---
+
+### Deployment 
+Getting my application ready for deployment consisted of the following:- 
+1. Removing all my hard-coded environment variables to project my keys and secrets. These were placed in the .bashrc for development and entered into Heroku's Config Vars for production.
+2. Ensuring the applications requirements.txt is up-to-date with all the latest packages installed for my app being noted on this file. 
+	**The command to update requirements**
+		```
+		pip3 freeze > requirements.txt
+		```
+3. Set up the the Procfile - *A procfile is required by Heroku in order to tell the service worker what command to run for my application to start.*
+4. Set Flask's debugging to False.
+5. Push all my latest production ready code to GitHub ready for deployment via Heroku's GitHub function where you can deploy from GitHub the production ready app.
+
+**Upon successful deployment Heroku will give you the URL that is hosted your app**
+
+*Upon unsuccessful deployment Heroku will log the cause of the error and this is view able in the 'view log' section on the Heroku website. Here you will find a detailed report of what has cause your application not to be deployed successfully.*
+
+### Expanding on my project
+
+To get set up with a copy of my project you can do this multiple ways. 
+
+**Via GitHub** -  
+1. You can manually download locally to your machine and then upload to your preferred IDE. 
+2. Install the projects requirements.txt using `pip3 install -r requirements.txt`
+3. You will need to update a few enviroment varaiable before we can run the app.
+	1. `app.config["MONGO_DBNAME"] =  "cookbook"`
+	2. `app.config["MONGO_URI"] = os.getenv("MONGO_URI", "monogodb://localhost")`
+	3. `app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")`
+4. Once the above steps are complete you can try run the application using `python3 main.py`
+
+**Via the CLI** -
+5. Clone my repo via Git using the following command `https://github.com/ShaneMuir/Milestone-4.git`
+6. Install the projects requirements.txt using `pip3 install -r requirements.txt`
+7. You will need to update a few enviroment varaiable before we can run the app.
+	1. `app.config["MONGO_DBNAME"] =  "cookbook"`
+	2. `app.config["MONGO_URI"] = os.getenv("MONGO_URI", "monogodb://localhost")`
+	3. `app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")`
+8. Once the above steps are complete you can try run the application using `python3 main.py`
+
+### Credits & Acknowledgments 
+Credit is due to the following names. I would like to thank each and everyone who has helped or contributed to my project in any way. Please see lsit of names below:
+
+- Mentor **Spencer Barriball**
+- Youtuber **Pretty Printed**
+- Slack Users **johnL3_alumni, RyanCooper, Seán, robinz_alumni, Sonya_alumni**
+- Flask Megua Tutorial creator **Miguel Grinberg**
+- Head First Python: A Brain-Friendly Guide **Paul Barry**
+
+### LICENSE
+This project is release under the **MIT** licence. For more info [here.]()
 
