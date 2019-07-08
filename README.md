@@ -26,7 +26,7 @@ Reason's why Recipe Manager | Cookbook was created.
 >I need an app where I can store my recipe data and be have a page with all my listings in a view that is easily digestible. 
 
 ---
-### Wireframes 
+## Wireframes 
 [Desktop View](https://raw.githubusercontent.com/ShaneMuir/Milestone-4/master/wireframes/Cookbook%20Desktop%20homepage.png)
 [Tablet View](https://raw.githubusercontent.com/ShaneMuir/Milestone-4/master/wireframes/Cookbook%20Tablet%20homepage.png)
 [Mobile View](https://raw.githubusercontent.com/ShaneMuir/Milestone-4/master/wireframes/Cookbook%20Mobile.png)
@@ -38,7 +38,7 @@ In this project before starting on development I begin planning my database sche
 See my database Schema [here.](#)
 
 ---
-### Cookbooks Functionality
+## Cookbooks Functionality
 The app's main functionality is that it is capable of communicating to a dedicated document based database running on mLab using MongoDB. By using Python/Flask alongside Mongo I have been able to create an application that register and stores user data and recipe data. 
 
 By allowing users to be able to register with an account in order to create and store recipes on the app this has allowed me to be able to restrict certain views and put user restrictions in place to protect user recipe data.
@@ -54,7 +54,7 @@ My website is capable of register and logging in users, this feature allows me t
 My app is capable of locking down user data and only users who created that recipe can edit or delete it.
 
 ---
-### Technology Used
+## Technology Used
 - [Python 3](https://www.python.org/download/releases/3.0/)
 - [Flask 1.0.2](http://flask.pocoo.org/)
 - [HTML5](https://en.wikipedia.org/wiki/HTML5)
@@ -66,7 +66,7 @@ My app is capable of locking down user data and only users who created that reci
 - [mLab](https://mlab.com/)
 
 ---
-#### Database data
+## Database data
 
 All my recipe data was source from [**Edam**](https://developer.edamam.com/edamam-recipe-api) a free recipe search API that can provide recipe data from calling a API endpoint and receiving the data back as [JSON](https://www.json.org/). The way I ultilise this API was by using Python requests and creating a simple but yet effective CLI (Command Line Interface) script which was taken and adapted from the course material. In the course we made a program to work with MongoDB via the CLI. By creating a script to request data from the API I then adapt the Mongo CLI program to then inject my retrieved data and insert it into a Mongo collection. My import script can be found within this repo.
 
@@ -85,7 +85,7 @@ All my recipe data was source from [**Edam**](https://developer.edamam.com/edama
 The main reasoning behind the project was inspired by Code Institute as the brief was to create a cookbook type project. But my main inspiration came from [Blue Apron](https://www.blueapron.com/cookbook). For days before embarking on development with my milestone I visited and navigated around a lot of recipe sites and tried looking for functionality that sites were lacking and put my main focus on this. I wanted to create something for users that wasn't already out there. For free. This project will be release under MIT and I will detail below within this document how you as a developer can get a copy or clone my app and expand on it or even make it your own. I will explain in detail how I used the tech and what I used to develop and deploy my app. 
 
 ---
-### Testing
+## Testing
 Most of the applications testing was done throughout development, most of which was manual tests. I will outline most of what I did below for documentation purposes.
 
 **Testing Flask** - Within my settings I had flask's debugger set to 
@@ -237,7 +237,7 @@ My app will be fully functional across all major modern browsers. I have tested 
 
 ---
 
-### Resource Sites Used
+## Resource Sites Used
 - [Edam](https://developer.edamam.com/edamam-docs-recipe-api)
 - [Materialize Icons](https://materializecss.com/icons.html)
 - [Unplsash](https://unsplash.com/)
@@ -251,15 +251,18 @@ My app will be fully functional across all major modern browsers. I have tested 
 
 ---
 
-#### HTML & CSS
+### HTML & CSS
 All my HTML and CSS is valid, checked with the following validators
 
 - [HTML Validator](https://validator.w3.org/)
 -  [CSS Validator](https://jigsaw.w3.org/css-validator/)
 
+#### Website Performance
+Through the entirety of my project website performance is at the forefront of my mind. mark up has been optimized for website performance along with CSS/JS. All images have been compressed. As the project is on heroku the server can not be optimized.
+
 ---
 
-### Deployment 
+## Deployment 
 Getting my application ready for deployment consisted of the following:- 
 1. Removing all my hard-coded environment variables to project my keys and secrets. These were placed in the .bashrc for development and entered into Heroku's Config Vars for production.
 2. Ensuring the applications requirements.txt is up-to-date with all the latest packages installed for my app being noted on this file. 
@@ -297,8 +300,8 @@ To get set up with a copy of my project you can do this multiple ways.
 	3. `app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")`
 8. Once the above steps are complete you can try run the application using `python3 main.py`
 
-### Credits & Acknowledgments 
-Credit is due to the following names. I would like to thank each and everyone who has helped or contributed to my project in any way. Please see lsit of names below:
+## Credits & Acknowledgments 
+Credit is due to the following names. I would like to thank each and everyone who has helped or contributed to my project in any way. Please see list of names below:
 
 - Mentor **Spencer Barriball**
 - Youtuber **Pretty Printed**
@@ -306,6 +309,5 @@ Credit is due to the following names. I would like to thank each and everyone wh
 - Flask Megua Tutorial creator **Miguel Grinberg**
 - Head First Python: A Brain-Friendly Guide **Paul Barry**
 
-### LICENSE
+# LICENSE
 This project is release under the **MIT** licence. For more info [here.]()
-
