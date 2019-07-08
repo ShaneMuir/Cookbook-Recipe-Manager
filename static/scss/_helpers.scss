@@ -7,3 +7,10 @@ $white: #fff;
 $black: #000;
 $txt-color: #6a6d75;
 $txt-hvr-color: #0f346c;
+
+
+@media only screen and (max-width: 1024px) {
+.hide-item-medium {
+    display: none !important;
+}
+}

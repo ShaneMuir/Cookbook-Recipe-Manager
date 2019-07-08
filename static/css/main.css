@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans|Margarine");
+@media only screen and (max-width: 1024px) {
+  .hide-item-medium {
+    display: none !important; } }
 /* Global styles */
 ::selection {
   background: #f26226; }
@@ -649,6 +652,18 @@ img.responsive-img {
 .error-link {
   text-decoration: underline; }
 
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+  .tp-search {
+    height: 10vh; }
+
+  #db_query {
+    width: 75%; }
+
+  .row .col.s12 .input-field {
+    margin: auto;
+    text-align: center;
+    left: 0;
+    right: 0; } }
 @media only screen and (max-width: 992px) {
   nav .sidenav-trigger {
     height: 56px;
@@ -657,6 +672,38 @@ img.responsive-img {
 @media only screen and (max-width: 600px) {
   .logo {
     font-size: 20px; }
+
+  .tp-search {
+    height: 10vh; }
+
+  .row .col.s12 .input-field {
+    margin: auto;
+    text-align: center;
+    left: 0;
+    right: 0; }
+
+  #db_query {
+    width: 60%; }
+
+  .search-btn {
+    border-radius: 2px;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    box-sizing: content-box;
+    padding: 5px 10px;
+    display: inline-block;
+    text-decoration: none;
+    line-height: 1;
+    height: 25px;
+    color: #000;
+    border: 2px solid;
+    font-size: 15px;
+    border-color: #f26226;
+    outline: none;
+    background-color: transparent;
+    font-family: 'Margarine', cursive; }
 
   .input-field.col .prefix ~ label,
   .input-field.col .prefix ~ .validate ~ label {

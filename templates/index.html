@@ -18,10 +18,10 @@
 {% endfor %} {% endif %} {% endwith %}
 
 <div class="row tp-search">
-    <div class="col hide-on-small-only m3">
+    <div class="col hide-item-medium l3">
         <span class="v-align site-logo"><i class="small material-icons nav-icon">local_dining</i>Cookbook</span>
     </div>
-    <div class="col s12 m9">
+    <div class="col s12 m12">
         <form action="{{ url_for('search') }}" class="search-form">
             <div class="input-field col s12">
                 <i class="material-icons prefix">youtube_searched_for</i>
@@ -34,7 +34,7 @@
 
 <!-- Page Layout here -->
 <div class="row">
-    <div class="col s12 m3">
+    <div class="col s12 m3 hide-on-small-only">
         <ul class="collapsible">
             <li class="active">
                 <div class="collapsible-header">Diet Labels<i class="material-icons dropdown-icon">arrow_drop_down</i></div>
@@ -95,13 +95,11 @@
         {% endfor %}
 
         <ul class="pagination">
-            <li class="disabled"><i class="material-icons">chevron_left</i></li>
             {% for page_number in pages %} {% if page_number == current_page %}
             <li class="active"><a>{{ page_number }}</a></li>
             {% else %}
             <li class="waves-effect"><a href="{{ url_for('index', current_page=page_number) }}">{{ page_number }}</a></li>
             {% endif %} {% endfor %}
-            <li class="disabled"><i class="material-icons">chevron_right</i></li>
         </ul>
         <!-- end of col-9 -->
     </div>
