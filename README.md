@@ -292,13 +292,13 @@ To get set up with a copy of my project you can do this multiple ways.
 4. Once the above steps are complete you can try run the application using `python3 main.py`
 
 **Via the CLI** -
-5. Clone my repo via Git using the following command `https://github.com/ShaneMuir/Milestone-4.git`
-6. Install the projects requirements.txt using `pip3 install -r requirements.txt`
-7. You will need to update a few enviroment varaiable before we can run the app.
+1. Clone my repo via Git using the following command `https://github.com/ShaneMuir/Milestone-4.git`
+2. Install the projects requirements.txt using `pip3 install -r requirements.txt`
+3. You will need to update a few enviroment varaiable before we can run the app.
 	1. `app.config["MONGO_DBNAME"] =  "cookbook"`
 	2. `app.config["MONGO_URI"] = os.getenv("MONGO_URI", "monogodb://localhost")`
 	3. `app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")`
-8. Once the above steps are complete you can try run the application using `python3 main.py`
+4. Once the above steps are complete you can try run the application using `python3 main.py`
 
 ## Credits & Acknowledgments 
 Credit is due to the following names. I would like to thank each and everyone who has helped or contributed to my project in any way. Please see list of names below:
