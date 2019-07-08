@@ -94,10 +94,10 @@
         {% endfor %}
 
         <ul class="pagination">
-            {% for page_number in pages %} {% if page_number == current_page %}
+              {% for page_number in pages %} {% if page_number == current_page %}
             <li class="active"><a>{{ page_number }}</a></li>
             {% else %}
-            <li class="waves-effect"><a href="{{ url_for('index', current_page=page_number) }}">{{ page_number }}</a></li>
+            <li class="waves-effect"><a href="{{ url_for('search', current_page=page_number, db_query=db_query) }}">{{ page_number }}</a></li>
             {% endif %} {% endfor %}
         </ul>
 
