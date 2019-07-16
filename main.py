@@ -8,12 +8,15 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Flask, render_template, redirect, request, url_for, flash
 from flask import session
 
+
 app = Flask(__name__)
 
-"""ENVIROMENT VARIABLES"""
+
+# ENVIROMENT VARIABLES
 app.config["MONGO_DBNAME"] = "cookbook"
 app.config["MONGO_URI"] = os.getenv("MONGO_URI", "monogodb://localhost")
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
+
 
 mongo = PyMongo(app)
 
@@ -21,8 +24,9 @@ mongo = PyMongo(app)
 @app.route('/')
 def index():
     """
-    This route allows users to view all the recipes within the database
-    collection with pagination
+    Route allows users to view all the recipes within the database
+    collection with pagination, logged in users can view profile and create
+    recipes.
     """
     page_limit = 6  # Logic for pagination
     current_page = int(request.args.get('current_page', 1))
@@ -45,7 +49,10 @@ def index():
 
 @app.route('/recipe/<recipe_id>', methods=['GET', 'POST'])
 def recipe(recipe_id):
-    """Route for viewing a single recipe"""
+    """
+    Route for viewing a single recipe in detail.
+    Logged in users can edit and delete.
+    """
     a_recipe = mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)})
 
     if 'logged_in' in session:
@@ -63,8 +70,7 @@ def recipe(recipe_id):
 def profile_page(user_id):
     """Route for users to view their profile page"""
     if 'logged_in' not in session:  # Check if its a logged in user
-        flash('Sorry, only logged in users can view the profile page.
-              Please register')
+        flash('Sorry, only logged in users can view the profile page.')
         return redirect(url_for('index'))
 
     current_user = mongo.db.user.find_one({"_id": ObjectId(user_id)})
@@ -150,10 +156,10 @@ def filtered():
             elif i == "health_labels":
                 filter_items = []
                 items = request.form.getlist(
-                                        'health_labels')  # get as a list []
-                my_key = request.form  # get as a multdict
-                for item in items:  # iterate through the list
-                    for key in my_key:  # grab key_name
+                                        'health_labels')
+                my_key = request.form
+                for item in items:
+                    for key in my_key:
                         filter_items.append({key: item})
                         results = mongo.db.recipe.find({
                                             '$and': [{'$or': filter_items}]})
@@ -185,8 +191,7 @@ def filtered():
 def create_recipe():
     """Create a new recipe to db collection"""
     if 'logged_in' not in session:  # Check if its a logged in user
-        flash('Sorry, only logged in users can create recipes.
-              Please register')
+        flash('Sorry, only logged in users can create recipes.')
         return redirect(url_for('index'))
 
     form = RecipeForm(request.form)  # Initialise the form
@@ -218,10 +223,9 @@ def create_recipe():
 
 @app.route('/edit_recipe/<recipe_id>', methods=['GET', 'POST'])
 def edit_recipe(recipe_id):
-    """Function to edit seclect recipe"""
+    """Function to edit selected recipe"""
     if 'logged_in' not in session:  # Check if its a logged in user
-        flash('Sorry, only logged in users can create recipes.
-              Please register')
+        flash('Sorry, only logged in users can create recipes.')
         return redirect(url_for('index'))
 
     user = mongo.db.user.find_one({"name": session['username'].title()})
