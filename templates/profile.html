@@ -1,23 +1,22 @@
-{% extends 'base.html' %}  {% block nav %} {% include '_navbar.html' %} {% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% block nav %} {% include '_navbar.html' %} {% endblock %} {% block content %}
 <!-- Page Layout here -->
-<div class="row">
+<main class="row">
     <div class="col s12 m3">
         <div class="profile-container">
-        <img class="responsive-img profile-img" src="{{ url_for('static', filename="img/gravatar.png") }}">
-        <h4 class="heading">Name: {{ current_user['name'] }}</h4>
-        <p class="text">Recipes: {{ count }}</p>
+            <figure>
+                <img class="responsive-img profile-img" src="{{ url_for('static', filename="img/gravatar.png") }}">
+            </figure>
+            <h4 class="heading">Name: {{ current_user['name'] }}</h4>
+            <p class="text">Recipes: {{ count }}</p>
         </div>
-        
-        </div>
+    </div>
 
 
     <div class="col s12 m9">
         <h3 class="heading">Your recipes</h3>
         {% for r in recipes %}
         <div class="col s12 m4">
-            
+
             <div class="card hoverable">
                 <div class="card-image">
                     <img src="{{ r['recipe_image'] }}">
@@ -32,15 +31,13 @@
 
         </div>
         {% endfor %}
-        
+
         <!-- end of col-9 -->
     </div>
     <!-- end of row -->
-</div>
+</main>
 
 
 
 
-{% endblock %}
-
-{% block footer %} {% include '_footer.html' %} {% endblock %}
+{% endblock %} {% block footer %} {% include '_footer.html' %} {% endblock %}

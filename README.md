@@ -1,3 +1,4 @@
+
 # Recipe Manager | Cookbook App
 ## [Demo Here](https://milestone4.herokuapp.com/)
 What is 'Recipe Manager | Cookbook' - It's an app built with Flask and MongoDB. In this application I use technology learnt on my coding journey to demonstrate how a document based database can be ultilise efficiently and effective to create simple yet effective scalable apps on the web. The aim of this project is to showcase my tech learnt so far from the course. 
@@ -35,7 +36,7 @@ Reason's why Recipe Manager | Cookbook was created.
 ### Database Schema
 In this project before starting on development I begin planning my database schema from how I wanted my database to work. Throughout the project design my schema has changed slightly but has given me good knowledge of how my database needed to be set out. 
 
-See my database Schema [here.](#)
+See my database Schema's [here.](#)
 
 ---
 ## Cookbooks Functionality
