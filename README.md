@@ -36,7 +36,7 @@ Reason's why Recipe Manager | Cookbook was created.
 ### Database Schema
 In this project before starting on development I begin planning my database schema from how I wanted my database to work. Throughout the project design my schema has changed slightly but has given me good knowledge of how my database needed to be set out. 
 
-See my database Schema's [here.](#)
+See my database Schema's [here.](https://github.com/ShaneMuir/Milestone-4/tree/master/wireframes/database_schema)
 
 ---
 ## Cookbooks Functionality
