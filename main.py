@@ -5,8 +5,8 @@ from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 from forms import LoginForm, RegistrationForm, RecipeForm
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask import Flask, render_template, redirect, request, url_for, flash
-from flask import session
+from flask import (Flask, render_template, redirect,
+                   request, url_for, flash, session)
 
 
 app = Flask(__name__)

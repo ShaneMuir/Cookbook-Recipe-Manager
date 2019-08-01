@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block nav %} {% include '_navbar.html' %} {% endblock %}
+{% block nav %} {% include 'includes/_navbar.html' %} {% endblock %}
 {% block content %}
 {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
 <div class="row" id="alert_box">
@@ -85,5 +85,5 @@
 
 {% endblock %}
 {% block footer %}
-{% include '_footer.html' %} 
+{% include 'includes/_footer.html' %} 
 {% endblock %}

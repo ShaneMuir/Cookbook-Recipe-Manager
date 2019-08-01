@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block nav %} {% include '_navbar.html' %} {% endblock %}
+{% extends 'base.html' %} {% block nav %} {% include 'includes/_navbar.html' %} {% endblock %}
 {% block content %}
 {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
 <div class="row" id="alert_box">
@@ -101,4 +101,4 @@
     </div>
     <!-- end of row -->
 </main>
-{% endblock %} {% block footer %} {% include '_footer.html' %} {% endblock %}
+{% endblock %} {% block footer %} {% include 'includes/_footer.html' %} {% endblock %}
